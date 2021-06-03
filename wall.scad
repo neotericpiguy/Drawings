@@ -4,6 +4,7 @@ module wall(length, height = 8 * 12)
 {
   studCenters = 16;
   drywallThickness = 1 / 2;
+
   for (x = [0:studCenters:length])
   {
     translate([ x, drywallThickness, 0 ])
@@ -21,5 +22,8 @@ module wall(length, height = 8 * 12)
 
   // Drywall
   if (enableDrywall)
+  {
+    color([1,1,1])
     cube([ length, drywallThickness, height ]);
+  }
 }
