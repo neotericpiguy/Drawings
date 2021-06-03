@@ -31,7 +31,7 @@ module lBracket(x = 0, y = 0, z = 0)
     translate([ twoByFourWidth / 2 + x, 0 + y, -diaganalLength_y + z ]) rotate([ 0, -b, 90 ])
         twoByFour(diaganalLength);
 
-    translate([ -twoByFourWidth + x, 0 + y, 0 + z ]) cube([ 2 * twoByFourWidth, 2 * diaganalLength_x, 2 * twoByFourHeight ]);
+    translate([ -twoByFourWidth + x, twoByFourWidth + y, 0 + z ]) cube([ 2 * twoByFourWidth, 2 * diaganalLength_x, 2 * twoByFourHeight ]);
     translate([ -twoByFourWidth + x, -2 * twoByFourHeight + y, -2 * diaganalLength_y + z ]) cube([ 2 * twoByFourWidth, 2 * twoByFourHeight, 2 * diaganalLength_y ]);
   }
 }
