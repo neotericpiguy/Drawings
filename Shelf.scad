@@ -1,7 +1,8 @@
-include<lBracket.scad>
+include<lBracket.scad>;
 
-    sideWallLength = 24;
-backWallLength = 48 - twoByFourWidth + 0.75;  //FIX
+sideWallLength = 24;
+backWallFullLength = 96;
+backWallLength = backWallFullLength / 2 - twoByFourWidth + twoByFourWidth / 2;
 
 // Side wall
 rotate([ 0, 0, 90 ]) twoByFour(sideWallLength);
@@ -27,4 +28,4 @@ translate([ -backWallLength - backWallLength, sideWallLength, twoByFourHeight - 
         lBracket();
 
 // Shelf plate
-translate([ -12 * 8, 0, twoByFourHeight ]) cube([ 12 * 8, 12 * 4 / 2, 3 / 4 ]);
+translate([ -12 * 8, 0, twoByFourHeight ]) cube([ 12 * 8, sideWallLength, 3 / 4 ]);
