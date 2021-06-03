@@ -9,7 +9,7 @@ module twoByFour(length)
 module lBracket(x = 0, y = 0, z = 0)
 {
   x = x - 0.25;
-  depth = 24;
+  depth = sideWallLength;
   height = 18;
 
   // Top plate
