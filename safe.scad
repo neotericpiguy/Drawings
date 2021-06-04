@@ -38,7 +38,8 @@ module keypad()
 
 module safeDoor(width = 19.75, height = 54.75, angle = 0)
 {
-  depth = 1 + 2.75;
+  doorThickness = 1;
+  doorPadding = 2.75;
   lip = 1;
   hingeHeight = 5;
   hingeDia = 1;
@@ -46,9 +47,9 @@ module safeDoor(width = 19.75, height = 54.75, angle = 0)
   rotate([ 0, 0, angle ])
       translate([ -width, 0, 0 ])
   {
-    cube([ width, 1, height ]);
+    cube([ width, doorThickness, height ]);
     translate([ lip, lip, lip ])
-        cube([ width - 2 * lip, 2.75, height - 2 * lip ]);
+        cube([ width - 2 * lip, doorPadding, height - 2 * lip ]);
 
     translate([ 0, 0, height * (2 / 3) ])
         translate([ width, -1 / 2, -hingeHeight / 2 ])
