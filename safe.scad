@@ -24,11 +24,15 @@ module frame(width = 24, depth = 20, height = 30, wallThickness = 2)
 
 module keypad()
 {
+  frameDepth = 3 / 8;
+  frameDia= 4;
+  padDepth = 3.75;
+
   rotate([ 90, 0, 0 ])
   {
-    cylinder(3 / 8, 4, 4);
-    translate([ 0, 0, 3 / 8 ])
-        cylinder(1, 3.75, 3.75);
+    cylinder(frameDepth, frameDia, frameDia);
+    translate([ 0, 0, frameDepth ])
+        cylinder(1, padDepth, padDepth);
   }
 }
 
@@ -57,7 +61,7 @@ module safeDoor(width = 19.75, height = 54.75, angle = 0)
     translate([ width / 2, 0, height * (2 / 3) ])
         keypad();
 
-    translate([ width / 2, 0, height * (15/ 32) ])
+    translate([ width / 2, 0, height * (15 / 32) ])
         doorHandle();
   }
 }
@@ -85,7 +89,7 @@ module doorHandle()
   }
 }
 
-module safe(doorAngle = 45, width = 24, depth = 20, height = 59.5)
+module safe(doorAngle = 60, width = 24, depth = 20, height = 59.5)
 {
   wallThickness = 2;
   lipDepth = 0.5;
@@ -106,4 +110,4 @@ module safe(doorAngle = 45, width = 24, depth = 20, height = 59.5)
       safeDoor(doorSafeWidth, height - 2 * wallThickness - doorMargin, doorAngle);
 }
 
-safe(60);
+safe();
