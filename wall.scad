@@ -1,4 +1,6 @@
-include<lBracket.scad>;
+include<standards.scad>;
+
+use <twoByFour.scad>;
 
 module wall(length, height = 8 * 12)
 {
@@ -34,3 +36,5 @@ module wall(length, height = 8 * 12)
         cube([ length, drywallThickness, height ]);
   }
 }
+
+wall(96);

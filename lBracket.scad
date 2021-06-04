@@ -1,22 +1,20 @@
-twoByFourWidth = 1.5;
-twoByFourHeight = 3.5;
+include<standards.scad>;
 
-module twoByFour(length)
-{
-  cube([ length, twoByFourWidth, twoByFourHeight ]);
-}
+use<twoByFour.scad>;
 
-module lBracket(x = 0, y = 0, z = 0)
+module lBracket(depth = 24, height = 18)
 {
-  x = x - 0.25;
-  depth = sideWallLength;
-  height = 18;
+  x = -0.25;  // Centering offset
 
   // Top plate
-  translate([ -twoByFourHeight / 2 + x, 0 + y, 0 + z ]) rotate([ 90, 0, 90 ]) twoByFour(depth);
+  translate([ -twoByFourHeight / 2 + x, 0, 0 ])
+      rotate([ 90, 0, 90 ])
+          twoByFour(depth);
 
   // Wall Plate
-  translate([ -twoByFourHeight / 2 + x, 0 + y, 0 + z ]) rotate([ 0, 90, 0 ]) twoByFour(height);
+  translate([ -twoByFourHeight / 2 + x, 0, 0 ])
+      rotate([ 0, 90, 0 ])
+          twoByFour(height);
 
   // Diagonal thing
   diaganalLength_x = depth * 2 / 3;
@@ -28,11 +26,12 @@ module lBracket(x = 0, y = 0, z = 0)
 
   difference()
   {
-    translate([ twoByFourWidth / 2 + x, 0 + y, -diaganalLength_y + z ]) rotate([ 0, -b, 90 ])
+    translate([ twoByFourWidth / 2 + x, 0, -diaganalLength_y ]) rotate([ 0, -b, 90 ])
         twoByFour(diaganalLength);
 
-    translate([ -twoByFourWidth + x, twoByFourWidth + y, 0 + z ]) cube([ 2 * twoByFourWidth, 2 * diaganalLength_x, 2 * twoByFourHeight ]);
-    translate([ -twoByFourWidth + x, -2 * twoByFourHeight + y, -2 * diaganalLength_y + z ]) cube([ 2 * twoByFourWidth, 2 * twoByFourHeight, 2 * diaganalLength_y ]);
+    translate([ -twoByFourWidth + x, twoByFourWidth, 0 ]) cube([ 2 * twoByFourWidth, 2 * diaganalLength_x, 2 * twoByFourHeight ]);
+    translate([ -twoByFourWidth + x, -2 * twoByFourHeight, -2 * diaganalLength_y ]) cube([ 2 * twoByFourWidth, 2 * twoByFourHeight, 2 * diaganalLength_y ]);
   }
 }
 
+lBracket();
