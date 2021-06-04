@@ -1,8 +1,8 @@
 include<standards>;
 
+use<safe.scad>;
 use<shelfUnit.scad>;
 use<wall.scad>;
-use<safe.scad>;
 
 module workbench()
 {
