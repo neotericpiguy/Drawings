@@ -2,7 +2,7 @@ include<standards>;
 
 use<twoByFour.scad>;
 
-module wall(length, height = 8 * 12) {
+module wall(length, height = 8 * 12, drywallCoverage = [ 0, 0 ]) {
   //base plate
   for (x = [0:twoByFourLength:length - twoByFourLength])
   {
@@ -38,8 +38,6 @@ module wall(length, height = 8 * 12) {
         rotate([ 0, -90, -90 ])
             twoByFour(height - 2 * twoByFourHeight);
   }
-
-  // Landed on an un even stud center
   if (length % studCenters != 0)
   {
     translate([ length - twoByFourHeight, drywallThickness, twoByFourHeight ])
@@ -55,12 +53,50 @@ module wall(length, height = 8 * 12) {
             twoByFour(height - 2 * twoByFourHeight);
   }
 
-  // Drywall
-  if (enableDrywall)
+  color([ 1, 1, 1 ])
+      drywall(length, height, drywallCoverage);
+}
+
+module drywall(overallLength, height = 8 * 12, coverage = [0.0]) {
+  drywallOffset = twoByFourDepth + drywallThickness;
+
+  length = overallLength + drywallOffset * (coverage[0] + coverage[1]);
+  if (coverage[0] == 1 && coverage[1] == 1)
   {
-    color([ 1, 1, 1 ])
+    dryWallStart = -drywallOffset;
+    translate([ dryWallStart, 0, 0 ])
+        cube([ length, drywallThickness, height ]);
+  }
+  else if (coverage[0] == -1 && coverage[1] == -1)
+  {
+    dryWallStart = drywallOffset;
+    translate([ dryWallStart, 0, 0 ])
+        cube([ length, drywallThickness, height ]);
+  }
+  else if (coverage[1] != 0)
+  {
+    dryWallStart = 0;
+    translate([ dryWallStart, 0, 0 ])
+        cube([ length, drywallThickness, height ]);
+  }
+  else
+  {
+    dryWallStart = coverage[0] * (-(twoByFourDepth + drywallThickness));
+    translate([ dryWallStart, 0, 0 ])
         cube([ length, drywallThickness, height ]);
   }
 }
 
-wall(9 * 12);
+translate([ 0, 2 * (twoByFourDepth + drywallThickness) * 6, 0 ])
+    wall(4 * 12, 8 * 12, [ 1, 1 ]);
+translate([ 0, 2 * (twoByFourDepth + drywallThickness) * 5, 0 ])
+    wall(4 * 12, 8 * 12, [ -1, -1 ]);
+translate([ 0, 2 * (twoByFourDepth + drywallThickness) * 4, 0 ])
+    wall(4 * 12, 8 * 12, [ -1, 0 ]);
+translate([ 0, 2 * (twoByFourDepth + drywallThickness) * 3, 0 ])
+    wall(4 * 12, 8 * 12, [ 0, -1 ]);
+translate([ 0, 2 * (twoByFourDepth + drywallThickness) * 2, 0 ])
+    wall(4 * 12, 8 * 12, [ 1, 0 ]);
+translate([ 0, 2 * (twoByFourDepth + drywallThickness) * 1, 0 ])
+    wall(4 * 12, 8 * 12, [ 0, 1 ]);
+wall(4 * 12);

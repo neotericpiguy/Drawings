@@ -6,12 +6,12 @@ module lBracket(depth = 24, height = 18) {
   x = -0.25;  // Centering offset
 
   // Top plate
-  translate([ -twoByFourHeight / 2 + x, 0, 0 ])
+  translate([ -twoByFourDepth / 2 + x, 0, 0 ])
       rotate([ 90, 0, 90 ])
           twoByFour(depth);
 
   // Wall Plate
-  translate([ -twoByFourHeight / 2 + x, 0, 0 ])
+  translate([ -twoByFourDepth / 2 + x, 0, 0 ])
       rotate([ 0, 90, 0 ])
           twoByFour(height);
 
@@ -24,11 +24,11 @@ module lBracket(depth = 24, height = 18) {
   c = atan2(diaganalLength_y, 0);                                 // azimuthal angle
 
   difference() {
-    translate([ twoByFourWidth / 2 + x, 0, -diaganalLength_y ]) rotate([ 0, -b, 90 ])
+    translate([ twoByFourHeight / 2 + x, 0, -diaganalLength_y ]) rotate([ 0, -b, 90 ])
         twoByFour(diaganalLength);
 
-    translate([ -twoByFourWidth + x, twoByFourWidth, 0 ]) cube([ 2 * twoByFourWidth, 2 * diaganalLength_x, 2 * twoByFourHeight ]);
-    translate([ -twoByFourWidth + x, -2 * twoByFourHeight, -2 * diaganalLength_y ]) cube([ 2 * twoByFourWidth, 2 * twoByFourHeight, 2 * diaganalLength_y ]);
+    translate([ -twoByFourHeight + x, twoByFourHeight, 0 ]) cube([ 2 * twoByFourHeight, 2 * diaganalLength_x, 2 * twoByFourDepth ]);
+    translate([ -twoByFourHeight + x, -2 * twoByFourDepth, -2 * diaganalLength_y ]) cube([ 2 * twoByFourHeight, 2 * twoByFourDepth, 2 * diaganalLength_y ]);
   }
 }
 
