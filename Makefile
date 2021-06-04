@@ -8,3 +8,12 @@ all: $(PNGS)
 $(BUILD_PATH)/%.png: %.scad
 	@mkdir -p $(BUILD_PATH)
 	openscad -o $@ $^
+
+clean:
+	-rm -rf $(PNGS)
+
+distclean:
+	-rm -rf $(BUILD_PATH)
+
+repoclean:
+	git clean -fxxd
