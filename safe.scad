@@ -25,7 +25,7 @@ module frame(width = 24, depth = 20, height = 30, wallThickness = 2)
 module keypad()
 {
   frameDepth = 3 / 8;
-  frameDia= 4;
+  frameDia = 4;
   padDepth = 3.75;
 
   rotate([ 90, 0, 0 ])

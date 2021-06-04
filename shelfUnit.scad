@@ -3,7 +3,7 @@ include<standards>;
 use<lBracket.scad>;
 use<twoByFour.scad>;
 
-module shelfUnit(shelfLength = 8*12, shelfDepth = 24)
+module shelfUnit(shelfLength = 8 * 12, shelfDepth = 24)
 {
   backWallLength = shelfLength / 2 - twoByFourWidth + twoByFourWidth / 2;
 
