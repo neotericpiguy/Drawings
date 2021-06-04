@@ -8,6 +8,7 @@ module workbench()
 {
   sideWallLength = 24;
   backWallFullLength = 9 * 12;
+
   // Side wall
   translate([ 0, sideWallLength, 0 ])
       rotate([ 0, 0, -90 ])
