@@ -2,6 +2,7 @@ include<standards.scad>;
 
 use<shelfUnit.scad>;
 use<wall.scad>;
+use<safe.scad>;
 
 module workbench()
 {
@@ -20,6 +21,9 @@ module workbench()
   // Shelving
   translate([ 0, 0, 72 ])
       shelfUnit();
+
+  translate([ -28, 0, 0 ])
+      safe();
 }
 
 workbench();
