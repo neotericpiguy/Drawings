@@ -87,16 +87,17 @@ module drywall(overallLength, height = 8 * 12, coverage = [0.0]) {
   }
 }
 
+testLength = 4;
 translate([ 0, 2 * (twoByFourDepth + drywallThickness) * 6, 0 ])
-    wall(4 * 12, 8 * 12, [ 1, 1 ]);
+    wall(testLength * 12, 8 * 12, [ 1, 1 ]);
 translate([ 0, 2 * (twoByFourDepth + drywallThickness) * 5, 0 ])
-    wall(4 * 12, 8 * 12, [ -1, -1 ]);
+    wall(testLength * 12, 8 * 12, [ -1, -1 ]);
 translate([ 0, 2 * (twoByFourDepth + drywallThickness) * 4, 0 ])
-    wall(4 * 12, 8 * 12, [ -1, 0 ]);
+    wall(testLength * 12, 8 * 12, [ -1, 0 ]);
 translate([ 0, 2 * (twoByFourDepth + drywallThickness) * 3, 0 ])
-    wall(4 * 12, 8 * 12, [ 0, -1 ]);
+    wall(testLength * 12, 8 * 12, [ 0, -1 ]);
 translate([ 0, 2 * (twoByFourDepth + drywallThickness) * 2, 0 ])
-    wall(4 * 12, 8 * 12, [ 1, 0 ]);
+    wall(testLength * 12, 8 * 12, [ 1, 0 ]);
 translate([ 0, 2 * (twoByFourDepth + drywallThickness) * 1, 0 ])
-    wall(4 * 12, 8 * 12, [ 0, 1 ]);
-wall(4 * 12);
+    wall(testLength * 12, 8 * 12, [ 0, 1 ]);
+wall(testLength * 12);
