@@ -1,22 +1,25 @@
-sideWallLength = 24;
-backWallFullLength = 8 * 12;
+include<standards.scad>;
 
-enableDrywall = 1;
+use<shelfUnit.scad>;
+use<wall.scad>;
 
-include<wall.scad>;
-include<shelfUnit.scad>;
+module workbench()
+{
+  sideWallLength = 24;
+  backWallFullLength = 9 * 12;
+  // Side wall
+  translate([ 0, sideWallLength, 0 ])
+      rotate([ 0, 0, -90 ])
+          wall(sideWallLength);
 
-// Side wall
-translate([ 0, sideWallLength, 0 ])
-    rotate([ 0, 0, -90 ])
-        wall(sideWallLength);
+  // Back wall
+  translate([ -backWallFullLength, sideWallLength, 0 ])
+      rotate([ 0, 0, 0 ])
+          wall(backWallFullLength);
 
-// Back wall
-translate([ -backWallFullLength, sideWallLength, 0 ])
-    rotate([ 0, 0, 0 ])
-        wall(backWallFullLength);
+  // Shelving
+  translate([ 0, 0, 72 ])
+      shelfUnit();
+}
 
-// Shelving
-translate([ 0, 0, 72 ])
-    shelfUnit();
-
+workbench();
