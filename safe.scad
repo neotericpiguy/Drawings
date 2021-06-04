@@ -1,9 +1,7 @@
 include<standards>;
 
-module openBox(width = 24, depth = 20, height = 30, wallThickness = 2)
-{
-  difference()
-  {
+module openBox(width = 24, depth = 20, height = 30, wallThickness = 2) {
+  difference() {
     // Outside dimensions
     cube([ width, depth, height ]);
 
@@ -12,32 +10,27 @@ module openBox(width = 24, depth = 20, height = 30, wallThickness = 2)
   }
 }
 
-module frame(width = 24, depth = 20, height = 30, wallThickness = 2)
-{
-  difference()
-  {
+module frame(width = 24, depth = 20, height = 30, wallThickness = 2) {
+  difference() {
     cube([ width, depth, height ]);
     translate([ wallThickness, -depth / 2, wallThickness ])
         cube([ width - 2 * wallThickness, 2 * depth, height - 2 * wallThickness ]);
   }
 }
 
-module keypad()
-{
+module keypad() {
   frameDepth = 3 / 8;
   frameDia = 4;
   padDepth = 3.75;
 
-  rotate([ 90, 0, 0 ])
-  {
+  rotate([ 90, 0, 0 ]) {
     cylinder(frameDepth, frameDia, frameDia);
     translate([ 0, 0, frameDepth ])
         cylinder(1, padDepth, padDepth);
   }
 }
 
-module safeDoor(width = 19.75, height = 54.75, angle = 0)
-{
+module safeDoor(width = 19.75, height = 54.75, angle = 0) {
   doorThickness = 1;
   doorPadding = 2.75;
   lip = 1;
@@ -45,8 +38,7 @@ module safeDoor(width = 19.75, height = 54.75, angle = 0)
   hingeDia = 1;
 
   rotate([ 0, 0, angle ])
-      translate([ -width, 0, 0 ])
-  {
+      translate([ -width, 0, 0 ]) {
     cube([ width, doorThickness, height ]);
     translate([ lip, lip, lip ])
         cube([ width - 2 * lip, doorPadding, height - 2 * lip ]);
@@ -67,14 +59,12 @@ module safeDoor(width = 19.75, height = 54.75, angle = 0)
   }
 }
 
-module doorHandle()
-{
+module doorHandle() {
   handleLength = 4;
   outsideDia = 2;
   spokes = 3;
 
-  rotate([ 90, 0, 0 ])
-  {
+  rotate([ 90, 0, 0 ]) {
     cylinder(3 / 4, outsideDia, outsideDia);
     translate([ 0, 0, 3 / 4 ])
         cylinder(1, 2, 1.5);
@@ -90,8 +80,7 @@ module doorHandle()
   }
 }
 
-module safe(doorAngle = 60, width = 24, depth = 20, height = 59.5)
-{
+module safe(doorAngle = 60, width = 24, depth = 20, height = 59.5) {
   wallThickness = 2;
   lipDepth = 0.5;
   lipWidth = 0.75;

@@ -4,8 +4,7 @@ use<safe.scad>;
 use<shelfUnit.scad>;
 use<wall.scad>;
 
-module workbench()
-{
+module workbench() {
   sideWallLength = 24;
   backWallFullLength = 9 * 12;
 

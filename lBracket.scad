@@ -2,8 +2,7 @@ include<standards>;
 
 use<twoByFour.scad>;
 
-module lBracket(depth = 24, height = 18)
-{
+module lBracket(depth = 24, height = 18) {
   x = -0.25;  // Centering offset
 
   // Top plate
@@ -24,8 +23,7 @@ module lBracket(depth = 24, height = 18)
   b = acos(diaganalLength_x / diaganalLength);                    // inclination angle
   c = atan2(diaganalLength_y, 0);                                 // azimuthal angle
 
-  difference()
-  {
+  difference() {
     translate([ twoByFourWidth / 2 + x, 0, -diaganalLength_y ]) rotate([ 0, -b, 90 ])
         twoByFour(diaganalLength);
 
