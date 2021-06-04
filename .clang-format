@@ -17,6 +17,6 @@ AfterControlStatement: true,
 BeforeCatch: true,
 SplitEmptyFunction: true,
 SplitEmptyRecord: true,
-AfterFunction: true,
+AfterFunction: false,
 AfterCaseLabel: true,
 }
