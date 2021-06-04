@@ -1,4 +1,4 @@
-include<standards.scad>;
+include<standards>;
 
 use<twoByFour.scad>;
 

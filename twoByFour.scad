@@ -1,4 +1,4 @@
-include<standards.scad>;
+include<standards>;
 
 module twoByFour(length)
 {
