@@ -1,9 +1,8 @@
-include<standards.scad>;
+include<standards>;
 
-use <twoByFour.scad>;
+use<twoByFour.scad>;
 
-module wall(length, height = 8 * 12)
-{
+module wall(length, height = 8 * 12) {
   studCenters = 16;
   drywallThickness = 1 / 2;
 

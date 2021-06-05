@@ -1,0 +1,26 @@
+name: SCAD
+
+on:
+  push:
+    branches: [ exp ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  style-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set Email
+      run: git config --global user.email "action@github.com"
+    - name: Set name
+      run: git config --global user.name "Github Action"
+    - name: Grab those submodules
+      run: git submodule update --init --recursive
+    - name: Tag repo
+      run: git tag -a v1.0 -m "workflow"
+    - name: Installing deps
+      run: sudo apt-get -y install clang-format
+    - name: Run style-check
+      run: make -j style-check

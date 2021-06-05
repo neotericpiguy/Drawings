@@ -1,12 +1,13 @@
-include<standards.scad>;
+include<standards>;
 
+use<safe.scad>;
 use<shelfUnit.scad>;
 use<wall.scad>;
 
-module workbench()
-{
+module workbench() {
   sideWallLength = 24;
   backWallFullLength = 9 * 12;
+
   // Side wall
   translate([ 0, sideWallLength, 0 ])
       rotate([ 0, 0, -90 ])
@@ -20,6 +21,9 @@ module workbench()
   // Shelving
   translate([ 0, 0, 72 ])
       shelfUnit();
+
+  translate([ -28, 0, 0 ])
+      safe();
 }
 
 workbench();
