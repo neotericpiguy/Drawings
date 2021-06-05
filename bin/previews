@@ -13,7 +13,7 @@ main() {
   header > README.md
 
   find preview -iname '*.png' | sort | while read filename; do
-    echo "${filename}" >> README.md
+    echo "## ${filename}" >> README.md
     echo "<img src=\"${URL}/${filename}\" width=\"650\">" >> README.md
     echo -en "\n" >> README.md
   done
