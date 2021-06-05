@@ -1,7 +1,7 @@
 include<standards>;
 
 module twoByFour(length) {
-  cube([ length, twoByFourWidth, twoByFourHeight ]);
+  cube([ length, twoByFourHeight, twoByFourDepth ]);
 }
 
 twoByFour(48);
