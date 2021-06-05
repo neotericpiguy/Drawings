@@ -3,33 +3,33 @@ include<standards>;
 use<twoByFour.scad>;
 
 module wall(length, height = 8 * 12, drywallCoverage = [ 0, 0 ]) {
-  //  //base plate
-  //  for (x = [0:twoByFourLength:length - twoByFourLength])
-  //  {
-  //    translate([ x, drywallThickness, twoByFourHeight ])
-  //        rotate([ -90, 0, 0 ])
-  //            twoByFour(twoByFourLength);
-  //  }
-  //  if (length % twoByFourLength != 0)
-  //  {
-  //    translate([ length - (length % twoByFourLength), drywallThickness, twoByFourHeight ])
-  //        rotate([ -90, 0, 0 ])
-  //            twoByFour(length % twoByFourLength);
-  //  }
+  // base plate
+  for (x = [0:twoByFourLength:length - twoByFourLength])
+  {
+    translate([ x, drywallThickness, twoByFourHeight ])
+        rotate([ -90, 0, 0 ])
+            twoByFour(twoByFourLength);
+  }
+  if (length % twoByFourLength != 0)
+  {
+    translate([ length - (length % twoByFourLength), drywallThickness, twoByFourHeight ])
+        rotate([ -90, 0, 0 ])
+            twoByFour(length % twoByFourLength);
+  }
 
-  //  //top plate
-  //  for (x = [0:twoByFourLength:length - twoByFourLength])
-  //  {
-  //    translate([ x, drywallThickness, height ])
-  //        rotate([ -90, 0, 0 ])
-  //            twoByFour(twoByFourLength);
-  //  }
-  //  if (length % twoByFourLength != 0)
-  //  {
-  //    translate([ length - (length % twoByFourLength), drywallThickness, height ])
-  //        rotate([ -90, 0, 0 ])
-  //            twoByFour(length % twoByFourLength);
-  //  }
+  // top plate
+  for (x = [0:twoByFourLength:length - twoByFourLength])
+  {
+    translate([ x, drywallThickness, height ])
+        rotate([ -90, 0, 0 ])
+            twoByFour(twoByFourLength);
+  }
+  if (length % twoByFourLength != 0)
+  {
+    translate([ length - (length % twoByFourLength), drywallThickness, height ])
+        rotate([ -90, 0, 0 ])
+            twoByFour(length % twoByFourLength);
+  }
 
   // stud on centers
   for (x = [0:studCenters:length - studCenters / 2])
@@ -108,7 +108,7 @@ module drywall(length, height = 8 * 12, drywallCoverage = [ 0, 0 ]) {
   }
 }
 
-testLength = 3;
+testLength = 4;
 
 translate([ testLength * 12, -testLength * 12 * 2, 0 ])
     rotate([ 0, 0, 0 ])
