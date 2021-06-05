@@ -17,6 +17,8 @@ main() {
     echo "<img src=\"${URL}/${filename}\" width=\"650\">" >> README.md
     echo -en "\n" >> README.md
   done
+
+  echo "README.md updated!"
 }
 
 main $@
