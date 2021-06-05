@@ -1,13 +1,17 @@
 SCAD_SRCS=$(shell find -iname '*.scad')
 PNGS=$(addprefix $(BUILD_PATH)/,$(SCAD_SRCS:.scad=.png))
+INC_PATHS=$(shell find modules -type d -not -iname '*git*')
+
+space := $(subst ,, )
+MODULE_PATHS:= $(subst $(space),:,$(INC_PATHS))
 
 BUILD_PATH=preview
 
 all: $(PNGS)
 
 $(BUILD_PATH)/%.png: %.scad
-	@mkdir -p $(BUILD_PATH)
-	openscad -o $@ $^
+	@mkdir -p `dirname $@`
+	OPENSCADPATH=$(MODULE_PATHS) openscad -o $@ $^
 
 clean:
 	-rm -rf $(PNGS)
@@ -27,3 +31,6 @@ style-check: $(SCAD_SRCS)
 		git diff; \
 		exit 1;\
 	fi
+
+view:
+	OPENSCADPATH=$(MODULE_PATHS) openscad modules/
