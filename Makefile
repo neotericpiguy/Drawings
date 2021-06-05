@@ -7,7 +7,10 @@ MODULE_PATHS:= $(subst $(space),:,$(INC_PATHS))
 
 BUILD_PATH=preview
 
-all: $(PNGS)
+all: $(PNGS) README.md
+
+README.md: $(PNGS) ./bin/previews
+	@./bin/previews
 
 $(BUILD_PATH)/%.png: %.scad
 	@mkdir -p `dirname $@`
@@ -17,7 +20,7 @@ clean:
 	-rm -rf $(PNGS)
 
 distclean:
-	-rm -rf $(BUILD_PATH)
+	-rm -rf $(BUILD_PATH) README.md
 
 repoclean:
 	git clean -fxxd

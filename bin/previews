@@ -1,0 +1,24 @@
+#!/bin/bash
+
+URL="https://raw.githubusercontent.com/neotericpiguy/Drawings/master"
+
+header() {
+echo "# Drawings
+
+Repo to learn the art of openscad
+"
+}
+
+main() {
+  header > README.md
+
+  find preview -iname '*.png' | sort | while read filename; do
+    echo "## ${filename}" >> README.md
+    echo "<img src=\"${URL}/${filename}\" width=\"650\">" >> README.md
+    echo -en "\n" >> README.md
+  done
+
+  echo "README.md updated!"
+}
+
+main $@
