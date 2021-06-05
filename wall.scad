@@ -3,33 +3,33 @@ include<standards>;
 use<twoByFour.scad>;
 
 module wall(length, height = 8 * 12, drywallCoverage = [ 0, 0 ]) {
-  //base plate
-  for (x = [0:twoByFourLength:length - twoByFourLength])
-  {
-    translate([ x, drywallThickness, twoByFourHeight ])
-        rotate([ -90, 0, 0 ])
-            twoByFour(twoByFourLength);
-  }
-  if (length % twoByFourLength != 0)
-  {
-    translate([ length - (length % twoByFourLength), drywallThickness, twoByFourHeight ])
-        rotate([ -90, 0, 0 ])
-            twoByFour(length % twoByFourLength);
-  }
+  //  //base plate
+  //  for (x = [0:twoByFourLength:length - twoByFourLength])
+  //  {
+  //    translate([ x, drywallThickness, twoByFourHeight ])
+  //        rotate([ -90, 0, 0 ])
+  //            twoByFour(twoByFourLength);
+  //  }
+  //  if (length % twoByFourLength != 0)
+  //  {
+  //    translate([ length - (length % twoByFourLength), drywallThickness, twoByFourHeight ])
+  //        rotate([ -90, 0, 0 ])
+  //            twoByFour(length % twoByFourLength);
+  //  }
 
-  //top plate
-  for (x = [0:twoByFourLength:length - twoByFourLength])
-  {
-    translate([ x, drywallThickness, height ])
-        rotate([ -90, 0, 0 ])
-            twoByFour(twoByFourLength);
-  }
-  if (length % twoByFourLength != 0)
-  {
-    translate([ length - (length % twoByFourLength), drywallThickness, height ])
-        rotate([ -90, 0, 0 ])
-            twoByFour(length % twoByFourLength);
-  }
+  //  //top plate
+  //  for (x = [0:twoByFourLength:length - twoByFourLength])
+  //  {
+  //    translate([ x, drywallThickness, height ])
+  //        rotate([ -90, 0, 0 ])
+  //            twoByFour(twoByFourLength);
+  //  }
+  //  if (length % twoByFourLength != 0)
+  //  {
+  //    translate([ length - (length % twoByFourLength), drywallThickness, height ])
+  //        rotate([ -90, 0, 0 ])
+  //            twoByFour(length % twoByFourLength);
+  //  }
 
   // stud on centers
   for (x = [0:studCenters:length - studCenters / 2])
@@ -53,51 +53,85 @@ module wall(length, height = 8 * 12, drywallCoverage = [ 0, 0 ]) {
             twoByFour(height - 2 * twoByFourHeight);
   }
 
-  color([ 1, 1, 1 ])
-      drywall(length, height, drywallCoverage);
+  if (drywallCoverage[0] != 0 || drywallCoverage[1] != 0)
+  {
+    translate([ ((drywallCoverage[0] + 2) % 3) * twoByFourDepth + drywallCoverage[0] * -twoByFourHeight,
+                drywallThickness + (drywallCoverage[0] + 1) * twoByFourHeight / 2,
+                twoByFourHeight ])
+        rotate([ ((drywallCoverage[0] + 2) % 3) * 90, -90, -90 ])
+            twoByFour(height - 2 * twoByFourHeight);
+  }
+
+  if (drywallCoverage[1] == -1)
+  {
+    translate([ length - twoByFourHeight, drywallThickness, twoByFourHeight ])
+        rotate([ 90, -90, -90 ])
+            twoByFour(height - 2 * twoByFourHeight);
+  }
+
+  if (drywallCoverage[1] == 1)
+  {
+    translate([ length, drywallThickness + twoByFourHeight, twoByFourHeight ])
+        rotate([ 0, -90, -90 ])
+            twoByFour(height - 2 * twoByFourHeight);
+  }
+
+  if (enableDrywall)
+  {
+    color([ 1, 1, 1 ])
+        drywall(length, height, drywallCoverage);
+  }
 }
 
-module drywall(overallLength, height = 8 * 12, coverage = [0.0]) {
+module drywall(length, height = 8 * 12, drywallCoverage = [ 0, 0 ]) {
   drywallOffset = twoByFourDepth + drywallThickness;
 
-  length = overallLength + drywallOffset * (coverage[0] + coverage[1]);
-  if (coverage[0] == 1 && coverage[1] == 1)
+  drywallLength = length + drywallOffset * (drywallCoverage[0] + drywallCoverage[1]);
+  if (drywallCoverage[0] == 1 && drywallCoverage[1] == 1)
   {
     dryWallStart = -drywallOffset;
     translate([ dryWallStart, 0, 0 ])
-        cube([ length, drywallThickness, height ]);
+        cube([ drywallLength, drywallThickness, height ]);
   }
-  else if (coverage[0] == -1 && coverage[1] == -1)
+  else if (drywallCoverage[0] == -1 && drywallCoverage[1] == -1)
   {
     dryWallStart = drywallOffset;
     translate([ dryWallStart, 0, 0 ])
-        cube([ length, drywallThickness, height ]);
+        cube([ drywallLength, drywallThickness, height ]);
   }
-  else if (coverage[1] != 0)
+  else if (drywallCoverage[1] != 0)
   {
     dryWallStart = 0;
     translate([ dryWallStart, 0, 0 ])
-        cube([ length, drywallThickness, height ]);
+        cube([ drywallLength, drywallThickness, height ]);
   }
   else
   {
-    dryWallStart = coverage[0] * (-(twoByFourDepth + drywallThickness));
+    dryWallStart = drywallCoverage[0] * (-(twoByFourDepth + drywallThickness));
     translate([ dryWallStart, 0, 0 ])
-        cube([ length, drywallThickness, height ]);
+        cube([ drywallLength, drywallThickness, height ]);
   }
 }
 
-testLength = 4;
-translate([ 0, 2 * (twoByFourDepth + drywallThickness) * 6, 0 ])
-    wall(testLength * 12, 8 * 12, [ 1, 1 ]);
-translate([ 0, 2 * (twoByFourDepth + drywallThickness) * 5, 0 ])
-    wall(testLength * 12, 8 * 12, [ -1, -1 ]);
-translate([ 0, 2 * (twoByFourDepth + drywallThickness) * 4, 0 ])
+testLength = 3;
+
+translate([ testLength * 12, -testLength * 12 * 2, 0 ])
+    rotate([ 0, 0, 0 ])
+        wall(testLength * 12);
+
+wall(testLength * 12, 8 * 12, [ 0, -1 ]);
+
+translate([ testLength * 12 - twoByFourDepth - drywallThickness, drywallThickness, 0 ])
+    rotate([ 0, 0, -90 ])
+        wall(testLength * 12, 8 * 12, [ 0, 0 ]);
+
+translate([ testLength * 12, -testLength * 12, 0 ])
+    rotate([ 0, 0, 0 ])
+        wall(testLength * 12, 8 * 12, [ 1, 1 ]);
+
+translate([ 2 * testLength * 12 + drywallThickness + twoByFourDepth, -testLength * 12 + drywallThickness, 0 ])
+    rotate([ 0, 0, 90 ])
+        wall(testLength * 12, 8 * 12, [ 0, 0 ]);
+
+translate([ testLength * 12 * 2, 0, 0 ])
     wall(testLength * 12, 8 * 12, [ -1, 0 ]);
-translate([ 0, 2 * (twoByFourDepth + drywallThickness) * 3, 0 ])
-    wall(testLength * 12, 8 * 12, [ 0, -1 ]);
-translate([ 0, 2 * (twoByFourDepth + drywallThickness) * 2, 0 ])
-    wall(testLength * 12, 8 * 12, [ 1, 0 ]);
-translate([ 0, 2 * (twoByFourDepth + drywallThickness) * 1, 0 ])
-    wall(testLength * 12, 8 * 12, [ 0, 1 ]);
-wall(testLength * 12);
