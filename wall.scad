@@ -53,7 +53,8 @@ module wall(length, height = 8 * 12, drywallCoverage = [ 0, 0 ]) {
             twoByFour(height - 2 * twoByFourHeight);
   }
 
-  if (drywallCoverage[0] != 0 || drywallCoverage[1] != 0)
+  // Drywall corner nail plates
+  if (drywallCoverage[0] != 0)
   {
     translate([ ((drywallCoverage[0] + 2) % 3) * twoByFourDepth + drywallCoverage[0] * -twoByFourHeight,
                 drywallThickness + (drywallCoverage[0] + 1) * twoByFourHeight / 2,
@@ -61,18 +62,12 @@ module wall(length, height = 8 * 12, drywallCoverage = [ 0, 0 ]) {
         rotate([ ((drywallCoverage[0] + 2) % 3) * 90, -90, -90 ])
             twoByFour(height - 2 * twoByFourHeight);
   }
-
-  if (drywallCoverage[1] == -1)
+  if (drywallCoverage[1] != 0)
   {
-    translate([ length - twoByFourHeight, drywallThickness, twoByFourHeight ])
-        rotate([ 90, -90, -90 ])
-            twoByFour(height - 2 * twoByFourHeight);
-  }
-
-  if (drywallCoverage[1] == 1)
-  {
-    translate([ length, drywallThickness + twoByFourHeight, twoByFourHeight ])
-        rotate([ 0, -90, -90 ])
+    translate([ length - ((drywallCoverage[1] + 2) % 3) * twoByFourHeight,
+                drywallThickness + (drywallCoverage[1] + 1) * twoByFourHeight / 2,
+                twoByFourHeight ])
+        rotate([ ((drywallCoverage[1] + 2) % 3) * 90, -90, -90 ])
             twoByFour(height - 2 * twoByFourHeight);
   }
 
