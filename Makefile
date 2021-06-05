@@ -9,6 +9,9 @@ BUILD_PATH=preview
 
 all: $(PNGS)
 
+README.md: $(PNGS)
+	./bin/previews
+
 $(BUILD_PATH)/%.png: %.scad
 	@mkdir -p `dirname $@`
 	OPENSCADPATH=$(MODULE_PATHS) openscad -o $@ $^
