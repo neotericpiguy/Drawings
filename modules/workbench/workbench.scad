@@ -57,6 +57,31 @@ module workbench(length = 72, depth = 24, height = 5 * 12) {
     }
   }
 
+  pegboard_thickness = 1 / 4;
+  module workbench_pegboard(length = 36, height = 24) {
+    peg_spacing_x = 1;
+    peg_spacing_z = 1;
+
+    module workbench_pegboard_peg() {
+      pegboard_holedia = 1 / 8;
+      translate([ 0, 0, 0 ])
+          rotate([ -90, 0, 0 ])
+              cylinder(pegboard_thickness * 2, 1 / 8, 1 / 8);
+    }
+
+    difference() {
+      cube([ length, pegboard_thickness, height ]);
+      for (x = [peg_spacing_x:peg_spacing_x:length - peg_spacing_x])
+      {
+        for (z = [peg_spacing_z:peg_spacing_z:height - peg_spacing_z])
+        {
+          translate([ x, -pegboard_thickness, z ])
+              workbench_pegboard_peg();
+        }
+      }
+    }
+  }
+
   workbench_legs(length, depth, workbench_leg_height);
 
   // Bottom shelf
@@ -70,7 +95,7 @@ module workbench(length = 72, depth = 24, height = 5 * 12) {
               workbench_leg_width ])
       workbench_shelf(length - 2 * workbench_leg_thickness, depth - 2 * workbench_leg_thickness);
 
-  // Peb board support
+  // Peb board support legs
   translate([ 0, depth, workbench_leg_height ])
       rotate([ 0, 0, -90 ])
           workbench_leg(height - workbench_leg_height);
@@ -81,8 +106,11 @@ module workbench(length = 72, depth = 24, height = 5 * 12) {
 
   // top shelf
   translate([ workbench_leg_thickness, depth - 12 - workbench_leg_thickness, height - workbench_shelf_thickness - workbench_leg_width ])
-      workbench_shelf(length - 2 * workbench_leg_thickness,
-                      12);
+      workbench_shelf(length - 2 * workbench_leg_thickness, 12);
+
+  // Pegboard
+  translate([ workbench_leg_thickness, depth - workbench_leg_thickness - pegboard_thickness, workbench_leg_height ])
+      workbench_pegboard(length - 2 * workbench_leg_thickness, height - workbench_leg_height - workbench_shelf_support_height);
 }
 
-workbench(36);
+workbench();
