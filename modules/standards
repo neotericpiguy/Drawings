@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
-twoByFourHeight = 1.5;
-twoByFourDepth = 3.5;
-twoByFourLength = 8 * 12;
+two_by_four_height = 1.5;
+two_by_four_depth = 3.5;
+two_by_four_length = 8 * 12;
 
 studCenters = 16;
 drywallThickness = 1 / 2;

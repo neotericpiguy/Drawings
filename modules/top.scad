@@ -1,7 +1,7 @@
 include<standards>;
 
 use<safe.scad>;
-use<shelfUnit.scad>;
+use<shelf.scad>;
 use<wall.scad>;
 
 module workbench() {
@@ -14,17 +14,17 @@ module workbench() {
           wall(sideWallLength);
 
   // light switch wall
-  translate([ twoByFourDepth + drywallThickness, 0, 0 ])
+  translate([ two_by_four_depth + drywallThickness, 0, 0 ])
       wall(sideWallLength, 8 * 12, [ 1, 0 ]);
 
   // Back wall
   translate([ -backWallFullLength, sideWallLength, 0 ])
       rotate([ 0, 0, 0 ])
-          wall(backWallFullLength + twoByFourDepth + drywallThickness, 8 * 12, [ 0, -1 ]);
+          wall(backWallFullLength + two_by_four_depth + drywallThickness, 8 * 12, [ 0, -1 ]);
 
   // Shelving
   translate([ 0, 0, 72 ])
-      shelfUnit();
+      shelf();
 
   // Safe
   translate([ -28, 0, 0 ])
