@@ -15,7 +15,7 @@ module workbench(length = 72, depth = 24, height = 5 * 12) {
   }
 
   module workbench_legs(length, depth, height) {
-    // Legs
+    // Front Legs
     translate([ 0, 0, 0 ])
         rotate([ 0, 0, 0 ])
             workbench_leg(height);
@@ -35,24 +35,26 @@ module workbench(length = 72, depth = 24, height = 5 * 12) {
   }
 
   module workbench_shelf(length, depth) {
-    translate([ 0, 0, workbench_leg_width ])
-        cube([ length, depth, workbench_shelf_thickness ]);
+    color([ 0.1, 0.1, 0.1 ]) {
+      translate([ 0, 0, workbench_leg_width ])
+          cube([ length, depth, workbench_shelf_thickness ]);
 
-    translate([ 0, 0, 0 ])
-        rotate([ 0, 0, 0 ])
-            cube([ length, workbench_leg_thickness, workbench_shelf_support_height ]);
+      translate([ 0, 0, 0 ])
+          rotate([ 0, 0, 0 ])
+              cube([ length, workbench_leg_thickness, workbench_shelf_support_height ]);
 
-    translate([ 0, depth - workbench_leg_thickness, 0 ])
-        rotate([ 0, 0, 0 ])
-            cube([ length, workbench_leg_thickness, workbench_shelf_support_height ]);
+      translate([ 0, depth - workbench_leg_thickness, 0 ])
+          rotate([ 0, 0, 0 ])
+              cube([ length, workbench_leg_thickness, workbench_shelf_support_height ]);
 
-    translate([ length, workbench_leg_thickness, 0 ])
-        rotate([ 0, 0, 90 ])
-            cube([ depth - 2 * workbench_leg_thickness, workbench_leg_thickness, workbench_shelf_support_height ]);
+      translate([ length, workbench_leg_thickness, 0 ])
+          rotate([ 0, 0, 90 ])
+              cube([ depth - 2 * workbench_leg_thickness, workbench_leg_thickness, workbench_shelf_support_height ]);
 
-    translate([ workbench_leg_thickness, workbench_leg_thickness, 0 ])
-        rotate([ 0, 0, 90 ])
-            cube([ depth - 2 * workbench_leg_thickness, workbench_leg_thickness, workbench_shelf_support_height ]);
+      translate([ workbench_leg_thickness, workbench_leg_thickness, 0 ])
+          rotate([ 0, 0, 90 ])
+              cube([ depth - 2 * workbench_leg_thickness, workbench_leg_thickness, workbench_shelf_support_height ]);
+    }
   }
 
   workbench_legs(length, depth, workbench_leg_height);
@@ -77,7 +79,7 @@ module workbench(length = 72, depth = 24, height = 5 * 12) {
       rotate([ 0, 0, 180 ])
           workbench_leg(height - workbench_leg_height);
 
-  // Bottom shelf
+  // top shelf
   translate([ workbench_leg_thickness, depth - 12 - workbench_leg_thickness, height - workbench_shelf_thickness - workbench_leg_width ])
       workbench_shelf(length - 2 * workbench_leg_thickness,
                       12);

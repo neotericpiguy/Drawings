@@ -24,8 +24,9 @@ module l_bracket(depth = 24, height = 18) {
   c = atan2(diaganalLength_y, 0);                                 // azimuthal angle
 
   difference() {
-    translate([ two_by_four_height / 2 + x, 0, -diaganalLength_y ]) rotate([ 0, -b, 90 ])
-        two_by_four(diaganalLength);
+    translate([ two_by_four_height / 2 + x, 0, -diaganalLength_y ])
+        rotate([ 0, -b, 90 ])
+            two_by_four(diaganalLength);
 
     translate([ -two_by_four_height + x, two_by_four_height, 0 ]) cube([ 2 * two_by_four_height, 2 * diaganalLength_x, 2 * two_by_four_depth ]);
     translate([ -two_by_four_height + x, -2 * two_by_four_depth, -2 * diaganalLength_y ]) cube([ 2 * two_by_four_height, 2 * two_by_four_depth, 2 * diaganalLength_y ]);
