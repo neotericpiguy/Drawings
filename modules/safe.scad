@@ -1,6 +1,6 @@
 include<standards>;
 
-module openBox(width = 24, depth = 20, height = 30, wallThickness = 2) {
+module safe_box(width = 24, depth = 20, height = 30, wallThickness = 2) {
   difference() {
     // Outside dimensions
     cube([ width, depth, height ]);
@@ -10,7 +10,7 @@ module openBox(width = 24, depth = 20, height = 30, wallThickness = 2) {
   }
 }
 
-module frame(width = 24, depth = 20, height = 30, wallThickness = 2) {
+module safe_door_frame(width = 24, depth = 20, height = 30, wallThickness = 2) {
   difference() {
     cube([ width, depth, height ]);
     translate([ wallThickness, -depth / 2, wallThickness ])
@@ -18,7 +18,7 @@ module frame(width = 24, depth = 20, height = 30, wallThickness = 2) {
   }
 }
 
-module keypad() {
+module safe_keypad() {
   frameDepth = 3 / 8;
   frameDia = 4;
   padDepth = 3.75;
@@ -30,7 +30,28 @@ module keypad() {
   }
 }
 
-module safeDoor(width = 19.75, height = 54.75, angle = 0) {
+module safe_door_handle() {
+  handleLength = 4;
+  outsideDia = 2;
+  spokes = 3;
+
+  rotate([ 90, 0, 0 ]) {
+    cylinder(3 / 4, outsideDia, outsideDia);
+    translate([ 0, 0, 3 / 4 ])
+        cylinder(1, 2, 1.5);
+  }
+
+  angInc = 360 / spokes;
+
+  for (x = [0:angInc:360])
+  {
+    rotate([ -25, x, 0 ])
+        translate([ 0, 0, -handleLength - outsideDia ])
+            cylinder(handleLength + 0.25, 7 / 8, 0.5);
+  }
+}
+
+module safe_door(width = 19.75, height = 54.75, angle = 0) {
   doorThickness = 1;
   doorPadding = 2.75;
   lip = 1;
@@ -52,31 +73,10 @@ module safeDoor(width = 19.75, height = 54.75, angle = 0) {
             cylinder(hingeHeight, hingeDia / 2, hingeDia / 2);
 
     translate([ width / 2, 0, height * (2 / 3) ])
-        keypad();
+        safe_keypad();
 
     translate([ width / 2, 0, height * (15 / 32) ])
-        doorHandle();
-  }
-}
-
-module doorHandle() {
-  handleLength = 4;
-  outsideDia = 2;
-  spokes = 3;
-
-  rotate([ 90, 0, 0 ]) {
-    cylinder(3 / 4, outsideDia, outsideDia);
-    translate([ 0, 0, 3 / 4 ])
-        cylinder(1, 2, 1.5);
-  }
-
-  angInc = 360 / spokes;
-
-  for (x = [0:angInc:360])
-  {
-    rotate([ -25, x, 0 ])
-        translate([ 0, 0, -handleLength - outsideDia ])
-            cylinder(handleLength + 0.25, 7 / 8, 0.5);
+        safe_door_handle();
   }
 }
 
@@ -88,16 +88,16 @@ module safe(doorAngle = 60, width = 24, depth = 20, height = 59.5) {
   doorMargin = 0.25;
 
   // Exterior
-  openBox(width, depth, height);
+  safe_box(width, depth, height);
 
   // Door lip
   translate([ wallThickness / 2, 1.5, wallThickness / 2 ])
-      frame(width - wallThickness, lipDepth, height - wallThickness, lipWidth + wallThickness / 2);
+      safe_door_frame(width - wallThickness, lipDepth, height - wallThickness, lipWidth + wallThickness / 2);
 
   // Door
   doorSafeWidth = width - 2 * wallThickness - doorMargin;
   translate([ wallThickness + doorMargin / 2 + doorSafeWidth, 0, wallThickness + doorMargin / 2 ])
-      safeDoor(doorSafeWidth, height - 2 * wallThickness - doorMargin, doorAngle);
+      safe_door(doorSafeWidth, height - 2 * wallThickness - doorMargin, doorAngle);
 }
 
 safe();

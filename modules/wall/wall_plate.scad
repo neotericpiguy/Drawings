@@ -1,19 +1,19 @@
 include<standards>;
 
-use<twoByFour.scad>;
+use<two_by_four.scad>;
 
 module wall_plate(length, height = 0) {
-  for (x = [0:twoByFourLength:length - twoByFourLength])
+  for (x = [0:two_by_four_length:length - two_by_four_length])
   {
     translate([ x, drywallThickness, height ])
         rotate([ -90, 0, 0 ])
-            twoByFour(twoByFourLength);
+            two_by_four(two_by_four_length);
   }
-  if (length % twoByFourLength != 0)
+  if (length % two_by_four_length != 0)
   {
-    translate([ length - (length % twoByFourLength), drywallThickness, height ])
+    translate([ length - (length % two_by_four_length), drywallThickness, height ])
         rotate([ -90, 0, 0 ])
-            twoByFour(length % twoByFourLength);
+            two_by_four(length % two_by_four_length);
   }
 }
 

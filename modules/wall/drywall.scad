@@ -4,7 +4,7 @@ module drywall(length, height = 8 * 12, drywallCoverage = [ 0, 0 ]) {
   // TODO: Figure out why dryWallStart value isn't persistent outside of the if
   // statements
 
-  drywallOffset = twoByFourDepth + drywallThickness;
+  drywallOffset = two_by_four_depth + drywallThickness;
   drywallLength = length + drywallOffset * (drywallCoverage[0] + drywallCoverage[1]);
 
   if (enableDrywall)
@@ -30,7 +30,7 @@ module drywall(length, height = 8 * 12, drywallCoverage = [ 0, 0 ]) {
       }
       else
       {
-        dryWallStart = drywallCoverage[0] * (-(twoByFourDepth + drywallThickness));
+        dryWallStart = drywallCoverage[0] * (-(two_by_four_depth + drywallThickness));
         translate([ dryWallStart, 0, 0 ])
             cube([ drywallLength, drywallThickness, height ]);
       }
