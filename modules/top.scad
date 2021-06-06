@@ -3,8 +3,9 @@ include<standards>;
 use<safe.scad>;
 use<shelf.scad>;
 use<wall.scad>;
+use<workbench.scad>;
 
-module workbench() {
+module top() {
   sideWallLength = 24;
   backWallFullLength = 9 * 12;
 
@@ -23,12 +24,16 @@ module workbench() {
           wall(backWallFullLength + two_by_four_depth + drywallThickness, 8 * 12, [ 0, -1 ]);
 
   // Shelving
-  translate([ 0, 0, 72 ])
+  translate([ 0, 0, 7 * 12 ])
       shelf();
 
   // Safe
   translate([ -28, 0, 0 ])
       safe();
+
+  // workbench
+  translate([ -8 * 12, 0, 0 ])
+      workbench(48);
 }
 
-workbench();
+top();
