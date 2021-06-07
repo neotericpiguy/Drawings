@@ -35,3 +35,6 @@ Repo to learn the art of openscad
 ## preview/modules/wall/wall_studs.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/master/preview/modules/wall/wall_studs.png" width="650">
 
+## preview/modules/workbench/workbench.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/master/preview/modules/workbench/workbench.png" width="650">
+
