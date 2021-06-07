@@ -1,6 +1,6 @@
 #!/bin/bash
 
-URL="https://raw.githubusercontent.com/neotericpiguy/Drawings/master"
+URL="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev"
 
 header() {
 echo "# Drawings
