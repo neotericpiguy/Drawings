@@ -8,6 +8,9 @@ Repo to learn the art of openscad
 ## preview/modules/common/two_by_four.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/common/two_by_four.png" width="650">
 
+## preview/modules/kbbq_table.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/kbbq_table.png" width="650">
+
 ## preview/modules/safe.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/safe.png" width="650">
 
