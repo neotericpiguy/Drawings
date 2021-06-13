@@ -2,7 +2,7 @@ include<standards>;
 
 module kbbq_table(length = 72, depth = 48, height = 30) {
   top_thickness = 2;
-  leg_dia = 4;
+  leg_dia = 6;
 
   bench_leg_height = 18.5;
 
@@ -10,20 +10,20 @@ module kbbq_table(length = 72, depth = 48, height = 30) {
 
   chair_set_buffer = 6;  // Space between chairs
 
-  grill_dia = 10;
+  grill_dia = 24;
 
-  module kbbq_table_top(length, depth) {
+  module table_top(length, depth) {
     color([ 0.0001, 0.0001, 0.0001 ]) {
       difference() {
         cube([ length, depth, top_thickness ]);
 
         translate([ length / 2, depth / 2, -top_thickness / 2 ])
-            cylinder(top_thickness * 2, grill_dia, grill_dia);
+            cylinder(top_thickness * 2, grill_dia / 2, grill_dia / 2);
       }
     }
 
     translate([ length / 2, depth / 2, 0 ])
-        grill();
+        grill(grill_dia);
   }
 
   module table_leg(height) {
@@ -49,24 +49,37 @@ module kbbq_table(length = 72, depth = 48, height = 30) {
     }
   }
 
-  module grill() {
-    color([ 0.753, 0.753, 0.753 ]) {
-      rotate_extrude()
-          polygon(points = [ [ 0, 0 ], [ 5, 1 ], [ 10, 2 ], [ 9, 2 ], [ 4, 1 ], [ 0, 0.4 ] ]);
+  module grill(dia = 20, h = 2) {
+    r = dia / 2;
+    xs = [ 0, 2 / 3 * r, r ];
+    ys = [ 0, h / 2, h ];
+    n = len(xs);
+    x_bar = (xs * [ 1, 1, 1 ]) / n;
+    y_bar = (ys * [ 1, 1, 1 ]) / n;
+    x2_bar = (xs * xs) / n;
+    S_xx = xs * xs - n * x_bar * x_bar;
+    S_xy = xs * ys - n * x_bar * y_bar;
 
-      translate([ 0, 0, 3.5 ])
-          rotate([ 0, 180, 0 ])
-              rotate_extrude()
-                  polygon(points = [ [ 0, 0.4 ], [ 5, 1 ], [ 10, 2 ], [ 9, 2 ], [ 4, 1 ], [ 0, 0.7 ] ]);
+    function sum_x3(v, i, s = 0) = (i == s ? v[i] * v[i] * v[i] : v[i] * v[i] * v[i] + sum_x3(v, i - 1, s));
+    S_xx2 = sum_x3(xs, n - 1) - n * x_bar * x2_bar;
 
-      rotate_extrude()
-          polygon(points = [ [ 0, 0 ], [ 5, 1 ], [ 10, 2 ], [ 9, 2 ], [ 4, 1 ], [ 0, 0.4 ] ]);
+    function sum_x2x2(v, i, s = 0) = (i == s ? (v[i] * v[i] - x2_bar) * (v[i] * v[i] - x2_bar) : (v[i] * v[i] - x2_bar) * (v[i] * v[i] - x2_bar) + sum_x2x2(v, i - 1, s));
+    S_x2x2 = sum_x2x2(xs, n - 1);
 
-      translate([ 0, 0, 3.5 ])
-          rotate([ 0, 180, 0 ])
-              rotate_extrude()
-                  polygon(points = [ [ 0, 0.4 ], [ 5, 1 ], [ 10, 2 ], [ 9, 2 ], [ 4, 1 ], [ 0, 0.7 ] ]);
-    }
+    function sum_x2y(v, w, i, s = 0) = (i == s ? (v[i] * v[i] - x2_bar) * (w[i] - y_bar) : (v[i] * v[i] - x2_bar) * (w[i] - y_bar) + sum_x2y(v, w, i - 1, s));
+    S_x2y = sum_x2y(xs, ys, n - 1);
+
+    b = (S_xy * S_x2x2 - S_x2y * S_xx2) / (S_xx * S_x2x2 - (S_xx2 * S_xx2));
+    c = (S_x2y * S_xx - S_xy * S_xx2) / (S_xx * S_x2x2 - (S_xx2 * S_xx2));
+    a = y_bar - b * x_bar - c * x2_bar;
+
+    rotate_extrude()
+        polygon([for (x = [0:1:r])[x, a + b * x + c * x * x]]);
+
+    translate([ 0, 0, 2 * h - h / 3 ])
+        rotate([ 0, 180, 0 ])
+            rotate_extrude()
+                polygon([for (x = [0:1:r])[x, a + b * x + c * x * x]]);
   }
 
   chair_set_length = floor(length / (chair_width + chair_set_buffer)) * (chair_width + chair_set_buffer) - chair_set_buffer;
@@ -80,7 +93,7 @@ module kbbq_table(length = 72, depth = 48, height = 30) {
   }
 
   translate([ 0, 0, height ])
-      kbbq_table_top(length, depth);
+      table_top(length, depth);
 
   // Table legs
   translate([ length * 1 / 5, depth / 2, 0 ])
@@ -89,7 +102,7 @@ module kbbq_table(length = 72, depth = 48, height = 30) {
   translate([ length * 4 / 5, depth / 2, 0 ])
       table_leg(height);
 
-  translate([ 0, depth / 2 + depth / 2, 0 ])
+  translate([ 0, depth, 0 ])
       bench(length);
 }
 
