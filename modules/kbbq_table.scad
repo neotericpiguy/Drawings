@@ -22,8 +22,8 @@ module kbbq_table(length = 72, depth = 48, height = 30) {
       }
     }
 
-//    translate([ length / 2, depth / 2, 0 ])
-//        grill(grill_dia);
+    translate([ length / 2, depth / 2, 0 ])
+        grill(grill_dia);
   }
 
   module table_leg(height) {
@@ -92,8 +92,6 @@ module kbbq_table(length = 72, depth = 48, height = 30) {
 
   translate([ 0, depth, 0 ])
       bench(length);
-
-  !grill(12);
 }
 
 kbbq_table();
