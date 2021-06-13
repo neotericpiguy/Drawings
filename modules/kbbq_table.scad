@@ -10,7 +10,7 @@ module kbbq_table(length = 72, depth = 48, height = 30) {
 
   chair_set_buffer = 6;  // Space between chairs
 
-  grill_dia = 24;
+  grill_dia = depth / 2;
 
   module table_top(length, depth) {
     color([ 0.0001, 0.0001, 0.0001 ]) {
@@ -22,8 +22,8 @@ module kbbq_table(length = 72, depth = 48, height = 30) {
       }
     }
 
-    translate([ length / 2, depth / 2, 0 ])
-        grill(grill_dia);
+//    translate([ length / 2, depth / 2, 0 ])
+//        grill(grill_dia);
   }
 
   module table_leg(height) {
@@ -51,27 +51,15 @@ module kbbq_table(length = 72, depth = 48, height = 30) {
 
   module grill(dia = 20, h = 2) {
     r = dia / 2;
+
     xs = [ 0, 2 / 3 * r, r ];
     ys = [ 0, h / 2, h ];
-    n = len(xs);
-    x_bar = (xs * [ 1, 1, 1 ]) / n;
-    y_bar = (ys * [ 1, 1, 1 ]) / n;
-    x2_bar = (xs * xs) / n;
-    S_xx = xs * xs - n * x_bar * x_bar;
-    S_xy = xs * ys - n * x_bar * y_bar;
 
-    function sum_x3(v, i, s = 0) = (i == s ? v[i] * v[i] * v[i] : v[i] * v[i] * v[i] + sum_x3(v, i - 1, s));
-    S_xx2 = sum_x3(xs, n - 1) - n * x_bar * x2_bar;
+    reg = QuadReg(xs, ys);
 
-    function sum_x2x2(v, i, s = 0) = (i == s ? (v[i] * v[i] - x2_bar) * (v[i] * v[i] - x2_bar) : (v[i] * v[i] - x2_bar) * (v[i] * v[i] - x2_bar) + sum_x2x2(v, i - 1, s));
-    S_x2x2 = sum_x2x2(xs, n - 1);
-
-    function sum_x2y(v, w, i, s = 0) = (i == s ? (v[i] * v[i] - x2_bar) * (w[i] - y_bar) : (v[i] * v[i] - x2_bar) * (w[i] - y_bar) + sum_x2y(v, w, i - 1, s));
-    S_x2y = sum_x2y(xs, ys, n - 1);
-
-    b = (S_xy * S_x2x2 - S_x2y * S_xx2) / (S_xx * S_x2x2 - (S_xx2 * S_xx2));
-    c = (S_x2y * S_xx - S_xy * S_xx2) / (S_xx * S_x2x2 - (S_xx2 * S_xx2));
-    a = y_bar - b * x_bar - c * x2_bar;
+    a = reg[0];
+    b = reg[1];
+    c = reg[2];
 
     rotate_extrude()
         polygon([for (x = [0:1:r])[x, a + b * x + c * x * x]]);
@@ -104,6 +92,8 @@ module kbbq_table(length = 72, depth = 48, height = 30) {
 
   translate([ 0, depth, 0 ])
       bench(length);
+
+  !grill(12);
 }
 
 kbbq_table();
