@@ -70,6 +70,21 @@ module kbbq_table(length = 72, depth = 48, height = 30) {
                 polygon([for (x = [0:1:r])[x, a + b * x + c * x * x]]);
   }
 
+  module grill_demo() {
+    xs = [ 10, 12, 14 ];
+    ys = [ 0, 12, 26 ];
+    reg = QuadReg(xs, ys);
+    a = reg[0];
+    b = reg[1];
+    c = reg[2];
+
+    for (x = [10:2:20])
+    {
+      translate([ a + b * x + c * x * x, 0, 0 ])
+          grill(x);
+    }
+  }
+
   chair_set_length = floor(length / (chair_width + chair_set_buffer)) * (chair_width + chair_set_buffer) - chair_set_buffer;
   chair_set_offset = (length - chair_set_length) / 2;
 
@@ -92,6 +107,8 @@ module kbbq_table(length = 72, depth = 48, height = 30) {
 
   translate([ 0, depth, 0 ])
       bench(length);
+
+//  grill_demo();
 }
 
 kbbq_table();
