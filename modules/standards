@@ -20,8 +20,9 @@ enableDrywall = 1;
 // https://keisan.casio.com/exec/system/14059932254941
 ////////////////////////////////////////////////////////////////////////////////
 function n(v) = len(v);
-function x_bar(xs) = (xs * [ 1, 1, 1 ]) / n(xs);
-function y_bar(ys) = (ys * [ 1, 1, 1 ]) / n(ys);
+function sum_v(v, i, s = 0) = (i == s ? v[i] : v[i] + sum_v(v, i - 1, s));
+function x_bar(xs) = sum_v(xs, n(xs) - 1) / n(xs);
+function y_bar(ys) = sum_v(ys, n(ys) - 1) / n(ys);
 function x2_bar(xs) = (xs * xs) / n(xs);
 function S_xx(xs) = xs * xs - n(xs) * x_bar(xs) * x_bar(xs);
 function S_xy(xs, ys) = xs * ys - n(xs) * x_bar(xs) * y_bar(ys);
@@ -36,8 +37,8 @@ function S_x2y(xs, ys) = sum_x2y(xs, ys, n(xs) - 1);
 
 function QuadReg_denom(xs) = (S_xx(xs) * S_x2x2(xs) - (S_xx2(xs) * S_xx2(xs)));
 function QuadReg_B(xs, ys) = (S_xy(xs, ys) * S_x2x2(xs) - S_x2y(xs, ys) * S_xx2(xs)) / QuadReg_denom(xs);
-function QuadReg_C(xs, ys) = (S_x2y(xs,ys) * S_xx(xs) - S_xy(xs,ys) * S_xx2(xs)) / QuadReg_denom(xs);
-function QuadReg_A(xs, ys) =  y_bar(ys) - QuadReg_B(xs,ys) * x_bar(xs) - QuadReg_C(xs,ys) * x2_bar(xs);
+function QuadReg_C(xs, ys) = (S_x2y(xs, ys) * S_xx(xs) - S_xy(xs, ys) * S_xx2(xs)) / QuadReg_denom(xs);
+function QuadReg_A(xs, ys) = y_bar(ys) - QuadReg_B(xs, ys) * x_bar(xs) - QuadReg_C(xs, ys) * x2_bar(xs);
 
 function QuadReg(xs, ys) = [ QuadReg_A(xs, ys), QuadReg_B(xs, ys), QuadReg_C(xs, ys) ];
 
