@@ -2,7 +2,7 @@ include<standards>;
 
 module kbbq_table(length = 72, depth = 48, height = 30) {
   top_thickness = 2;
-  leg_dia = 4;
+  leg_dia = 6;
 
   bench_leg_height = 18.5;
 
@@ -10,20 +10,20 @@ module kbbq_table(length = 72, depth = 48, height = 30) {
 
   chair_set_buffer = 6;  // Space between chairs
 
-  grill_dia = 10;
+  grill_dia = depth / 2;
 
-  module kbbq_table_top(length, depth) {
+  module table_top(length, depth) {
     color([ 0.0001, 0.0001, 0.0001 ]) {
       difference() {
         cube([ length, depth, top_thickness ]);
 
         translate([ length / 2, depth / 2, -top_thickness / 2 ])
-            cylinder(top_thickness * 2, grill_dia, grill_dia);
+            cylinder(top_thickness * 2, grill_dia / 2, grill_dia / 2);
       }
     }
 
     translate([ length / 2, depth / 2, 0 ])
-        grill();
+        grill(grill_dia);
   }
 
   module table_leg(height) {
@@ -49,23 +49,39 @@ module kbbq_table(length = 72, depth = 48, height = 30) {
     }
   }
 
-  module grill() {
-    color([ 0.753, 0.753, 0.753 ]) {
-      rotate_extrude()
-          polygon(points = [ [ 0, 0 ], [ 5, 1 ], [ 10, 2 ], [ 9, 2 ], [ 4, 1 ], [ 0, 0.4 ] ]);
+  module grill(dia = 20, h = 2) {
+    r = dia / 2;
 
-      translate([ 0, 0, 3.5 ])
-          rotate([ 0, 180, 0 ])
-              rotate_extrude()
-                  polygon(points = [ [ 0, 0.4 ], [ 5, 1 ], [ 10, 2 ], [ 9, 2 ], [ 4, 1 ], [ 0, 0.7 ] ]);
+    xs = [ 0, 2 / 3 * r, r ];
+    ys = [ 0, h / 2, h ];
 
-      rotate_extrude()
-          polygon(points = [ [ 0, 0 ], [ 5, 1 ], [ 10, 2 ], [ 9, 2 ], [ 4, 1 ], [ 0, 0.4 ] ]);
+    reg = QuadReg(xs, ys);
 
-      translate([ 0, 0, 3.5 ])
-          rotate([ 0, 180, 0 ])
-              rotate_extrude()
-                  polygon(points = [ [ 0, 0.4 ], [ 5, 1 ], [ 10, 2 ], [ 9, 2 ], [ 4, 1 ], [ 0, 0.7 ] ]);
+    a = reg[0];
+    b = reg[1];
+    c = reg[2];
+
+    rotate_extrude()
+        polygon([for (x = [0:1:r])[x, a + b * x + c * x * x]]);
+
+    translate([ 0, 0, 2 * h - h / 3 ])
+        rotate([ 0, 180, 0 ])
+            rotate_extrude()
+                polygon([for (x = [0:1:r])[x, a + b * x + c * x * x]]);
+  }
+
+  module grill_demo() {
+    xs = [ 10, 12, 14 ];
+    ys = [ 0, 12, 26 ];
+    reg = QuadReg(xs, ys);
+    a = reg[0];
+    b = reg[1];
+    c = reg[2];
+
+    for (x = [10:2:20])
+    {
+      translate([ a + b * x + c * x * x, 0, 0 ])
+          grill(x);
     }
   }
 
@@ -80,7 +96,7 @@ module kbbq_table(length = 72, depth = 48, height = 30) {
   }
 
   translate([ 0, 0, height ])
-      kbbq_table_top(length, depth);
+      table_top(length, depth);
 
   // Table legs
   translate([ length * 1 / 5, depth / 2, 0 ])
@@ -89,8 +105,10 @@ module kbbq_table(length = 72, depth = 48, height = 30) {
   translate([ length * 4 / 5, depth / 2, 0 ])
       table_leg(height);
 
-  translate([ 0, depth / 2 + depth / 2, 0 ])
+  translate([ 0, depth, 0 ])
       bench(length);
+
+//  grill_demo();
 }
 
 kbbq_table();
