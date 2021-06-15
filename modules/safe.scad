@@ -35,14 +35,29 @@ module safe(doorAngle = 60, width = 24, depth = 20, height = 59.5) {
     module keypad() {
       frameDepth = 3 / 8;
       frameDia = 4;
-      padDepth = 3.75;
+      padDia = 3.75;
+      padDepth = 1;
+      x_offset = 1.25;
+      y_offset = 0.65;
+      text_height = 0.1;
 
       rotate([ 90, 0, 0 ]) {
         cylinder(frameDepth, frameDia, frameDia);
         translate([ 0, 0, frameDepth ])
-            cylinder(1, padDepth, padDepth);
+            cylinder(padDepth, padDia, padDia);
+
+        translate([ x_offset, y_offset, frameDepth + padDepth ])
+            linear_extrude(text_height)
+                text("1234", 1, halign = "right");
+        translate([ x_offset, y_offset - 1, frameDepth + padDepth ])
+            linear_extrude(text_height)
+                text("5678", 1, halign = "right");
+        translate([ x_offset, y_offset - 2, frameDepth + padDepth ])
+            linear_extrude(text_height)
+                text("*90#", 1, halign = "right");
       }
     }
+
     module handle() {
       handleLength = 4;
       outsideDia = 2;
@@ -64,25 +79,31 @@ module safe(doorAngle = 60, width = 24, depth = 20, height = 59.5) {
       }
     }
 
-    rotate([ 0, 0, angle ])
-        translate([ -width, 0, 0 ]) {
-      cube([ width, doorThickness, height ]);
-      translate([ lip, lip, lip ])
-          cube([ width - 2 * lip, doorPadding, height - 2 * lip ]);
+    rotate([ 0, 0, angle ]) {
+      translate([ -width, 0, 0 ]) {
+        cube([ width, doorThickness, height ]);
 
-      translate([ 0, 0, height * (2 / 3) ])
-          translate([ width, -1 / 2, -hingeHeight / 2 ])
-              cylinder(hingeHeight, hingeDia / 2, hingeDia / 2);
+        translate([ lip, lip, lip ])
+            cube([ width - 2 * lip, doorPadding, height - 2 * lip ]);
 
-      translate([ 0, 0, height * (1 / 3) ])
-          translate([ width, -1 / 2, -hingeHeight / 2 ])
-              cylinder(hingeHeight, hingeDia / 2, hingeDia / 2);
+        translate([ 0, 0, height * (2 / 3) ])
+            translate([ width, -1 / 2, -hingeHeight / 2 ])
+                cylinder(hingeHeight, hingeDia / 2, hingeDia / 2);
 
-      translate([ width / 2, 0, height * (2 / 3) ])
-          keypad();
+        translate([ 0, 0, height * (1 / 3) ])
+            translate([ width, -1 / 2, -hingeHeight / 2 ])
+                cylinder(hingeHeight, hingeDia / 2, hingeDia / 2);
 
-      translate([ width / 2, 0, height * (15 / 32) ])
-          handle();
+        translate([ width / 2, 0, height * (2 / 3) ])
+            keypad();
+
+        translate([ width / 2, 0, height * (15 / 32) ])
+            handle();
+        rotate([ 90, 0, 0 ])
+            translate([ width / 2, height * (25 / 32) ])
+                linear_extrude(0.5)
+                    text("Fortress", 2, halign = "center");
+      }
     }
   }
 
