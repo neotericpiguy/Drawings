@@ -18,20 +18,31 @@ enableDrywall = 1;
 ////////////////////////////////////////////////////////////////////////////////
 // Statistic functions
 // https://keisan.casio.com/exec/system/14059932254941
+//
+// Ideal usage:
+// x = [x0, x1, x2];
+// y = [y0, y1, y2];
+//
+// coefficients = QuadReg(x,y);
+//
+// a = coefficients[0];
+// b = coefficients[1];
+// c = coefficients[2];
+// 
+// y(x) = a + b * x + c * x *x
 ////////////////////////////////////////////////////////////////////////////////
 function n(v) = len(v);
 function sum_v(v, i, s = 0) = (i == s ? v[i] : v[i] + sum_v(v, i - 1, s));
 function x_bar(xs) = sum_v(xs, n(xs) - 1) / n(xs);
 function y_bar(ys) = sum_v(ys, n(ys) - 1) / n(ys);
 function x2_bar(xs) = (xs * xs) / n(xs);
+
 function S_xx(xs) = xs * xs - n(xs) * x_bar(xs) * x_bar(xs);
 function S_xy(xs, ys) = xs * ys - n(xs) * x_bar(xs) * y_bar(ys);
 function sum_x3(v, i, s = 0) = (i == s ? v[i] * v[i] * v[i] : v[i] * v[i] * v[i] + sum_x3(v, i - 1, s));
 function S_xx2(xs) = sum_x3(xs, n(xs) - 1) - n(xs) * x_bar(xs) * x2_bar(xs);
-
 function sum_x2x2(v, i, s = 0) = (i == s ? (v[i] * v[i] - x2_bar(v)) * (v[i] * v[i] - x2_bar(v)) : (v[i] * v[i] - x2_bar(v)) * (v[i] * v[i] - x2_bar(v)) + sum_x2x2(v, i - 1, s));
 function S_x2x2(xs) = sum_x2x2(xs, n(xs) - 1);
-
 function sum_x2y(v, w, i, s = 0) = (i == s ? (v[i] * v[i] - x2_bar(v)) * (w[i] - y_bar(w)) : (v[i] * v[i] - x2_bar(v)) * (w[i] - y_bar(w)) + sum_x2y(v, w, i - 1, s));
 function S_x2y(xs, ys) = sum_x2y(xs, ys, n(xs) - 1);
 

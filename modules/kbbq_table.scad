@@ -70,15 +70,18 @@ module kbbq_table(length = 72, depth = 48, height = 30) {
                 polygon([for (x = [0:1:r])[x, a + b * x + c * x * x]]);
   }
 
-  module grill_demo() {
-    xs = [ 10, 12, 14 ];
-    ys = [ 0, 12, 26 ];
+  module grill_demo( start = 10, end = 20, step = 2, buffer = 2) {
+    mid = start / 2 + buffer + (start + step) / 2;
+    last = mid + (start + step) / 2 + buffer + (start + 2 * step) / 2;
+
+    xs = [ start, start + step, start + 2 * step ];
+    ys = [ 0, mid, last ];
     reg = QuadReg(xs, ys);
     a = reg[0];
     b = reg[1];
     c = reg[2];
 
-    for (x = [10:2:20])
+    for (x = [start:step:end])
     {
       translate([ a + b * x + c * x * x, 0, 0 ])
           grill(x);
@@ -108,7 +111,7 @@ module kbbq_table(length = 72, depth = 48, height = 30) {
   translate([ 0, depth, 0 ])
       bench(length);
 
-//  grill_demo();
+  !grill_demo();
 }
 
 kbbq_table();
