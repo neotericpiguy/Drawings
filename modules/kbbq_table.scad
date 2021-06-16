@@ -111,7 +111,7 @@ module kbbq_table(length = 72, depth = 48, height = 30) {
   translate([ 0, depth, 0 ])
       bench(length);
 
-  !grill_demo();
+  // !grill_demo();
 }
 
 kbbq_table();
