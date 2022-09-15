@@ -4,8 +4,8 @@ use<wall.scad>;
 
 module office() {
   westWallLength = 12 * 12;
-  eastWallLength = westWallLength;
   southWallLength = 8 * 12;
+  eastWallLength = westWallLength;
   northWallLength = southWallLength;
   wallHeight = 8 * 12;
 
