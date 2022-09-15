@@ -1,0 +1,46 @@
+digraph H {
+  subgraph cluster_MR2_Lab {
+    label="MR2 Lab";
+    CATS_Computer [
+      shape=plaintext
+        label=<
+        <table>
+        <tr><td colspan="1">CATS Computer</td></tr>
+        <tr><td port='port_1'>Second port</td></tr>
+        <tr><td port='port_2'>Third port</td></tr>
+        <tr><td port='port_3'>Dolphin RFM</td></tr>
+        </table>
+        >
+    ];
+
+    ARC_Computer [
+      shape=plaintext
+        label=<
+        <table>
+        <tr><td colspan="1">ARC Computer</td></tr>
+        <tr><td port='port_3'>Dolphin BP</td></tr>
+        <tr><td port='port_2'>Second port</td></tr>
+        <tr><td port='port_1'>Dolphin RFM</td></tr>
+        </table>
+        >
+    ];
+    {rank=same ARC_Computer CATS_Computer};
+CATS_Computer:port_3   -> ARC_Computer:port_1[dir=both];
+  }
+
+  subgraph cluster_RF_Room {
+    label="RF Room";
+    Magma_exp_chasis [
+      shape=plaintext
+        label=<
+        <table>
+        <tr><td colspan="1">Magma Ex. Chasis</td></tr>
+        <tr><td port='port_1'>Dolphin BP</td></tr>
+        <tr><td port='port_3'>GPUs</td></tr>
+        <tr><td port='port_2'>4 DACs</td></tr>
+        </table>
+        >
+    ];
+  }
+ARC_Computer:port_3 -> Magma_exp_chasis:port_1;
+}

@@ -1,0 +1,53 @@
+digraph A {
+  node [ shape=record ];
+  subgraph cluster_MR2_Lab {
+    label = "MR2 Lab";
+    subgraph cluster_B {
+      label = "ARC Computer";
+
+      ARC [label="ARC"];
+      PXH810_0 [label="PXH810"];
+      DOLPHIN_0 [label="Dolphin"];
+      ARC -> PXH810_0[dir=both];
+    }
+
+    subgraph cluster_CATS_Computer {
+      label = "CATS Computer";
+      CATS_1 [label="CATS"];
+      EXP_CTRLER_0 [label="Ex. Ctrl0"];
+      EXP_CTRLER_1 [label="Ex. Ctrl1"];
+    }
+
+    subgraph cluster_D {
+      label = "Ex. Chasis 1";
+      PXH810_1 [label="PXH810"];
+      EXP_CTRLER_2 [label="Ex. Rem0"];
+    }
+
+    subgraph cluster_E {
+      label = "Ex. Chasis 2";
+      PXH810_1 [label="PXH810"];
+      EXP_CTRLER_3 [label="Ex. Rem1"];
+    }
+
+    EXP_CTRLER_0 -> EXP_CTRLER_2[dir=both];
+    EXP_CTRLER_1 -> EXP_CTRLER_3[dir=both];
+
+    IXS600 [label="IXS600"];
+
+    PXH810_0 -> IXS600[dir=both,label="x16"];
+    PXH810_1 -> IXS600[dir=both,label="x16"];
+  }
+  subgraph cluster_F {
+    label = "RF Room";
+    subgraph cluster_G {
+      label = "Magma";
+      GPU_0 [label="GPU0"];
+      GPU_1 [label="GPU1"];
+      GPU_2 [label="GPU2"];
+      DAC_0 [label="DACs"];
+      DOLPHIN_1 [label="Dolphin"];
+    }
+  }
+  DOLPHIN_0 -> DOLPHIN_1[dir=both];
+}
