@@ -13,7 +13,7 @@ README.md: $(PNGS) ./bin/previews
 	@./bin/previews
 
 $(BUILD_PATH)/%.png: %.scad
-	@mkdir -p `dirname $@`
+	@mkdir -p $(@D)
 	OPENSCADPATH=$(MODULE_PATHS) openscad -o $@ $^
 
 clean:
