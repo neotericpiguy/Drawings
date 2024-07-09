@@ -1,0 +1,32 @@
+include<standards>;
+
+// https://openscad.org/cheatsheet/
+
+DOC_SCALING_FACTOR = 10;
+
+include<dimlines>;
+
+DIM_LINE_WIDTH = .025 * DOC_SCALING_FACTOR;
+DIM_SPACE = .1 * DOC_SCALING_FACTOR;
+
+dimOn = true;
+
+base_cabinet_height = 34.5;
+base_cabinet_depth = 24;
+base_cabinet_width= 36;
+
+ear = 0.25;
+toekick_height = 3.5;
+toekick_depth = 3.5;
+
+rail_height = 1.75;
+rail_thickness = 0.75;
+
+stile_width = 1.75;
+stile_height = base_cabinet_height - toekick_height;
+stile_thickness = 0.75;
+
+  box_thickness = 0.75;
+//  box_width = base_cabinet_width - 2 * ear;
+//  box_depth = base_cabinet_depth - stile_thickness;
+//  box_height = stile_height;

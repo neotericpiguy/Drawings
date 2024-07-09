@@ -12,7 +12,8 @@ DIM_SPACE = .1 * DOC_SCALING_FACTOR;
 dimOn = false;
 
 module kitchen_sink(doorAngle = 60, overal_width = 36, overall_depth = 24, height = 34.5) {
-  module base_cabinet(base_cabinet_width = 24, base_cabinet_depth = 24, base_cabinet_height = 34.5, wallThickness = 2) { ear = 0.25;
+  module base_cabinet(base_cabinet_width = 24, base_cabinet_depth = 24, base_cabinet_height = 34.5, wallThickness = 2) { 
+    ear = 0.25;
     toekick_height = 3.5;
     toekick_depth = 3.5;
 
@@ -31,12 +32,15 @@ module kitchen_sink(doorAngle = 60, overal_width = 36, overall_depth = 24, heigh
     module box() {
       // Left Side
       cube([ box_thickness, box_depth, box_height ]);
+
       // Right Side
       translate([ box_width - box_thickness, 0, 0 ])
           cube([ box_thickness, box_depth, box_height ]);
+
       // Floor
       translate([ box_thickness, 0, stile_thickness ])
           cube([ box_width - 2 * box_thickness, box_depth, box_thickness ]);
+
       // Backing
       translate([ box_thickness, box_depth - box_thickness, box_height - 2 * rail_height ])
           cube([ box_width - 2 * box_thickness, box_thickness, 2 * rail_height ]);
