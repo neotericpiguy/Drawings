@@ -25,8 +25,8 @@ rail_thickness = 0.75;
 stile_width = 1.75;
 stile_height = base_cabinet_height - toekick_height;
 stile_thickness = 0.75;
+box_thickness = 0.75;
+box_width = base_cabinet_width - 2 * ear;
+box_depth = base_cabinet_depth - stile_thickness;
+box_height = stile_height;
 
-  box_thickness = 0.75;
-//  box_width = base_cabinet_width - 2 * ear;
-//  box_depth = base_cabinet_depth - stile_thickness;
-//  box_height = stile_height;

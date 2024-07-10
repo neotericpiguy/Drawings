@@ -16,19 +16,23 @@ module faceframe(base_cabinet_width = 36) {
   translate([ stile_width, 0, 0 ])
       cube([ base_cabinet_width - stile_width * 2, rail_thickness, rail_height ]);
 
-if (dimOn)
-{
-  color([ 0, 0, 0 ]) {
-    translate([ 0, 0, base_cabinet_height ])
-        rotate([ 90, 0, 0 ])
-            dimensions(base_cabinet_width);
+  if (dimOn)
+  {
+    color([ 0, 0, 0 ]) {
+      translate([ 0, 0, base_cabinet_height ])
+          rotate([ 90, 0, 0 ])
+              dimensions(base_cabinet_width);
 
-    translate([ -DIM_LINE_WIDTH, 0, 0 ])
-        rotate([ 90, -90, 0 ])
-            dimensions(stile_height);
+      translate([ -2, 0, 0 ])
+          rotate([ 90, -90, 0 ])
+              dimensions(stile_height);
+
+      translate([ -2, 0, 0 ])
+          rotate([ 0, 0, 90 ])
+              dimensions(stile_thickness,loc=1);
+    }
   }
-}
 }
 
 // Exterior
-faceframe(36);
+faceframe(base_cabinet_width);
