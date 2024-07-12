@@ -10,7 +10,7 @@ module base_cabinet(base_cabinet_width = 24, base_cabinet_depth = 24, base_cabin
       platform();
   translate([ ear, stile_thickness, toekick_height ])
       box();
-//dimentor(base_cabinet_width, base_cabinet_depth, base_cabinet_height, 8);
+  // dimentor(base_cabinet_width, base_cabinet_depth, base_cabinet_height, 8);
 }
 
 // Exterior
