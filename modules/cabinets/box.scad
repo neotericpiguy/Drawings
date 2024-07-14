@@ -1,6 +1,7 @@
 include<cabinet_standards>;
 
-module box() {
+module box(base_cabinet_width=36) {
+box_width = base_cabinet_width - 2 * ear;
   // Left Side
   cube([ box_thickness, box_depth, box_height ]);
 

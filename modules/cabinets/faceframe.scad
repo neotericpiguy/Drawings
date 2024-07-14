@@ -1,6 +1,6 @@
 include<cabinet_standards>;
 
-module faceframe() {
+module faceframe(base_cabinet_width=36) {
   // Left Stile
   cube([ stile_width, stile_thickness, stile_height ]);
 

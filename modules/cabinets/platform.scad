@@ -2,13 +2,10 @@ include<cabinet_standards>;
 use<two_by_four.scad>;
 
 // Exterior
-module platform() {
+module platform(base_cabinet_width=36) {
   platform_depth = base_cabinet_depth - toekick_depth;
   platform_height = toekick_height;
   platform_width = base_cabinet_width - 2 * ear;
-
-  // platform
-  //  cube([ platform_width, platform_depth, platform_height ]);
 
   // Front
   two_by_four(platform_width);
