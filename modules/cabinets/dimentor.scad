@@ -36,18 +36,18 @@ module dimentor(width, depth, height, offset = 2, side = 0) {
       // side view
       if (height > 0)
       {
-      if (depth > 0)
-      {
-        // Height
-        translate([ width, 0, -offset ]) {
-          rotate([ 90, 0, 90 ]) {
-            if (depth > 12)
-              dimensions(depth);
-            else
-              dimensions(depth, loc = 1);
+        if (depth > 0)
+        {
+          // Height
+          translate([ width, 0, -offset ]) {
+            rotate([ 90, 0, 90 ]) {
+              if (depth > 12)
+                dimensions(depth);
+              else
+                dimensions(depth, loc = 1);
+            }
           }
         }
-      }
 
         translate([ 0, depth + offset, 0 ]) {
           rotate([ 90, -90, 90 ]) {

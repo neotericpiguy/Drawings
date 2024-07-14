@@ -2,6 +2,27 @@
 
 Repo to learn the art of openscad
 
+## preview/modules/cabinets/base_cabinet.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/base_cabinet.png" width="650">
+
+## preview/modules/cabinets/box.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/box.png" width="650">
+
+## preview/modules/cabinets/dimentor.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/dimentor.png" width="650">
+
+## preview/modules/cabinets/faceframe.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/faceframe.png" width="650">
+
+## preview/modules/cabinets/kitchen_sink.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/kitchen_sink.png" width="650">
+
+## preview/modules/cabinets/platform.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/platform.png" width="650">
+
+## preview/modules/cabinets/sink_top.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/sink_top.png" width="650">
+
 ## preview/modules/common/l_bracket.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/common/l_bracket.png" width="650">
 
@@ -11,11 +32,20 @@ Repo to learn the art of openscad
 ## preview/modules/kbbq_table.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/kbbq_table.png" width="650">
 
+## preview/modules/rooms/office.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/office.png" width="650">
+
 ## preview/modules/safe.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/safe.png" width="650">
 
 ## preview/modules/shelf.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/shelf.png" width="650">
+
+## preview/modules/TextGenerator_after_2015.03.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/TextGenerator_after_2015.03.png" width="650">
+
+## preview/modules/TextGenerator.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/TextGenerator.png" width="650">
 
 ## preview/modules/top.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/top.png" width="650">
