@@ -20,8 +20,20 @@ Repo to learn the art of openscad
 ## preview/modules/cabinets/platform.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/platform.png" width="650">
 
+## preview/modules/cabinets/sink_front_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/sink_front_view.png" width="650">
+
+## preview/modules/cabinets/sink_iso_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/sink_iso_view.png" width="650">
+
+## preview/modules/cabinets/sink_side_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/sink_side_view.png" width="650">
+
 ## preview/modules/cabinets/sink_top.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/sink_top.png" width="650">
+
+## preview/modules/cabinets/sink_top_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/sink_top_view.png" width="650">
 
 ## preview/modules/common/l_bracket.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/common/l_bracket.png" width="650">
