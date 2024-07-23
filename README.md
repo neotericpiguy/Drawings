@@ -44,6 +44,21 @@ Repo to learn the art of openscad
 ## preview/modules/cabinets/emery_top_view.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/emery_top_view.png" width="650">
 
+## preview/modules/cabinets/existing_front_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/existing_front_view.png" width="650">
+
+## preview/modules/cabinets/existing_iso_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/existing_iso_view.png" width="650">
+
+## preview/modules/cabinets/existing_side_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/existing_side_view.png" width="650">
+
+## preview/modules/cabinets/existing_top.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/existing_top.png" width="650">
+
+## preview/modules/cabinets/existing_top_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/existing_top_view.png" width="650">
+
 ## preview/modules/cabinets/faceframe.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/faceframe.png" width="650">
 
@@ -79,6 +94,21 @@ Repo to learn the art of openscad
 
 ## preview/modules/cabinets/kitchen_sink.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/kitchen_sink.png" width="650">
+
+## preview/modules/cabinets/kraus_front_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/kraus_front_view.png" width="650">
+
+## preview/modules/cabinets/kraus_iso_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/kraus_iso_view.png" width="650">
+
+## preview/modules/cabinets/kraus_side_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/kraus_side_view.png" width="650">
+
+## preview/modules/cabinets/kraus_top.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/kraus_top.png" width="650">
+
+## preview/modules/cabinets/kraus_top_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/kraus_top_view.png" width="650">
 
 ## preview/modules/cabinets/platform.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/cabinets/platform.png" width="650">
