@@ -1,7 +1,6 @@
 include<cabinet_standards>;
 use<kitchen_sink.scad>;
 
-
 // https://www.homedepot.com/p/Glacier-Bay-33-in-Drop-In-Single-Bowl-18-Gauge-Gunmetal-black-Stainless-Steel-Workstation-Kitchen-Sink-with-Accessories-ACS3322A1TS/328548124#overlay
 kitchen_sink(countertop_width = 36,
              sink_width = 33,

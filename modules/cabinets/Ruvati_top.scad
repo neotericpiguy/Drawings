@@ -6,6 +6,6 @@ kitchen_sink(countertop_width = 36,
              sink_width = 33,
              sink_depth = 22,
              sink_height = 10,
-             cutout_width = 31, 
+             cutout_width = 31,
              cutout_depth = 18,
              cutout_placement_depth = 2);
