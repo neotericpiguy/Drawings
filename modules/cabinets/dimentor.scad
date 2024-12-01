@@ -4,6 +4,16 @@ module dimentor(width, depth, height, offset = 2, side = 0) {
   if (dimOn)
   {
     color([ 0, 0, 0 ]) {
+      if (width > 0 && depth > 0 && height == 0)
+      {
+        // Width
+        translate([ 0, depth + offset, 0 ]) {
+          if (width > 12)
+            dimensions(width);
+          else
+            dimensions(width);
+        }
+      }
       if (width > 0)
       {
         // Width

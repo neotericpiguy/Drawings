@@ -44,6 +44,9 @@ Repo to learn the art of openscad
 ## preview/modules/kbbq_table.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/kbbq_table.png" width="650">
 
+## preview/modules/rooms/kitchen.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/kitchen.png" width="650">
+
 ## preview/modules/rooms/office.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/office.png" width="650">
 
@@ -62,6 +65,9 @@ Repo to learn the art of openscad
 ## preview/modules/top.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/top.png" width="650">
 
+## preview/modules/wall/double_door.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/wall/double_door.png" width="650">
+
 ## preview/modules/wall/drywall.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/wall/drywall.png" width="650">
 
@@ -79,6 +85,9 @@ Repo to learn the art of openscad
 
 ## preview/modules/wall/wall_studs.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/wall/wall_studs.png" width="650">
+
+## preview/modules/wall/window.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/wall/window.png" width="650">
 
 ## preview/modules/workbench/workbench.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/workbench/workbench.png" width="650">
