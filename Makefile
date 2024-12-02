@@ -12,6 +12,7 @@ PNG_VIEWS=$(TOP_PNG) $(SIDE_PNG) $(FRONT_PNG) $(ISO_PNG)
 space := $(subst ,, )
 MODULE_PATHS:= $(subst $(space),:,$(INC_PATHS))
 
+# https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Using_OpenSCAD_in_a_command_line_environment
 BUILD_PATH=preview
 PNG_OPTS=--view=wireframe --autocenter --viewall --projection=o
 TOP_VIEW =--camera=0,0,0,0,0,-90 $(PNG_OPTS)

@@ -167,6 +167,9 @@ Repo to learn the art of openscad
 ## preview/modules/kbbq_table.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/kbbq_table.png" width="650">
 
+## preview/modules/rooms/kitchen_bak.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/kitchen_bak.png" width="650">
+
 ## preview/modules/rooms/kitchen_floor_plan.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/kitchen_floor_plan.png" width="650">
 
@@ -179,8 +182,14 @@ Repo to learn the art of openscad
 ## preview/modules/rooms/kitchen.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/kitchen.png" width="650">
 
+## preview/modules/rooms/kitchen_side_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/kitchen_side_view.png" width="650">
+
 ## preview/modules/rooms/kitchen_top.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/kitchen_top.png" width="650">
+
+## preview/modules/rooms/kitchen_top_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/kitchen_top_view.png" width="650">
 
 ## preview/modules/rooms/office.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/office.png" width="650">
