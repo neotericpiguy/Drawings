@@ -52,6 +52,19 @@ module dining_kitchen() {
           cube([ width/2, doorThickness, height ]);
   }
 
+  module window_cutout(width = 60, height = 8 * 12,heightFromFloor=24) {
+    buffer = 3;
+    cutout = (two_by_four_depth + drywallThickness) + buffer;
+
+    // Added for projections
+//    translate([ 0, 0, 0])
+//      cube([ width+2*two_by_four_height, two_by_four_depth+drywallThickness, two_by_four_height]);
+
+    translate([ 0, -buffer / 2, heightFromFloor])
+    color([ 0.5, 0.5, 0.5 ])
+      cube([ width, cutout, height+2*two_by_four_height ]);
+  }
+
   // West Wall
   translate([ 0, 0, 0 ])
       rotate([ 0, 0, 180 ]) {
@@ -88,13 +101,13 @@ module dining_kitchen() {
       translate([windowLeftReveal,0,0])
         dimentor(windowWidth, 4, 0, 4);
 
-      difference() {
+//      difference() {
         wall(eastWallLength, wallHeight, [ 0, 0 ]);
         translate([windowLeftReveal,0,0])
           window_cutout(windowWidth, windowHeight,windowHeightFromFloor);
-      }
-      translate([windowLeftReveal,0,0])
-        window_frame(windowWidth, windowHeight,windowHeightFromFloor);
+//      }
+//      translate([windowLeftReveal,0,0])
+//        window_frame(windowWidth, windowHeight,windowHeightFromFloor);
     }
 
   // South Wall with Window
