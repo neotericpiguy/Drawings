@@ -24,6 +24,8 @@ all: $(PNG_VIEWS) $(PNGS) README.md
 
 README.md: $(PNGS) ./bin/previews
 	@./bin/previews
+	rm -rf /data/phone/preview
+	cp -rv preview /data/phone
 
 $(BUILD_PATH)/%.png: %.scad
 	@mkdir -p $(@D)
