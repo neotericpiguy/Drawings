@@ -44,6 +44,9 @@ Repo to learn the art of openscad
 ## preview/modules/kbbq_table.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/kbbq_table.png" width="650">
 
+## preview/modules/rooms/kitchen_floor_plan.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/kitchen_floor_plan.png" width="650">
+
 ## preview/modules/rooms/kitchen.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/kitchen.png" width="650">
 
