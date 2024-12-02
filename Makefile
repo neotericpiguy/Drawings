@@ -14,7 +14,7 @@ MODULE_PATHS:= $(subst $(space),:,$(INC_PATHS))
 
 # https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Using_OpenSCAD_in_a_command_line_environment
 BUILD_PATH=preview
-PNG_OPTS=--view=wireframe --autocenter --viewall --projection=o
+PNG_OPTS=--view=wireframe --autocenter --viewall --projection=o --imgsize=3072,2304
 TOP_VIEW =--camera=0,0,0,0,0,-90 $(PNG_OPTS)
 SIDE_VIEW =--camera=0,0,0,-90,0,0 $(PNG_OPTS)
 FRONT_VIEW =--camera=0,0,0,0,90,0 $(PNG_OPTS)

@@ -13,6 +13,8 @@ two_by_four_length = 8 * 12;
 studCenters = 16;
 drywallThickness = 1 / 2;
 
+nothing=0.01;
+
 ////////////////////////////////////////////////////////////////////////////////
 
 enableDrywall = 1;
