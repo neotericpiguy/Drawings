@@ -27,7 +27,7 @@ module platform(base_cabinet_width = 36) {
       rotate([ 90, 0, 0 ])
           two_by_four(platform_width - 2 * two_by_four_height);
 
-  dimentor(platform_width, platform_depth, platform_height, 4);
+//  dimentor(platform_width, platform_depth, platform_height, 4);
 }
 
 platform();
