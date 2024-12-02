@@ -17,8 +17,7 @@ module box(base_cabinet_width = 36) {
   translate([ box_thickness, box_depth - box_thickness, box_height - 2 * rail_height ])
       cube([ box_width - 2 * box_thickness, box_thickness, 2 * rail_height ]);
 
-  translate([ box_thickness, 0, 6 ])
-      dimentor(box_width - 2 * box_thickness, box_depth, 0, -2);
+  dimentor(box_width, box_depth, box_height, 6);
 }
 
 box();

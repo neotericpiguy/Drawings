@@ -70,7 +70,7 @@ module kbbq_table(length = 72, depth = 48, height = 30) {
                 polygon([for (x = [0:1:r])[x, a + b * x + c * x * x]]);
   }
 
-  module grill_demo( start = 10, end = 20, step = 2, buffer = 2) {
+  module grill_demo(start = 10, end = 20, step = 2, buffer = 2) {
     mid = start / 2 + buffer + (start + step) / 2;
     last = mid + (start + step) / 2 + buffer + (start + 2 * step) / 2;
 
