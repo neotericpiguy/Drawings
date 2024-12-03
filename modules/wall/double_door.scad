@@ -2,34 +2,7 @@ include<standards>;
 
 use<wall.scad>;
 use<two_by_four.scad>;
-
-module double_door_cutout(width = 60, height = 8 * 12, ceilingHeight = 8 * 12) {
-  buffer = 2 * nothing;
-  cutout = two_by_four_depth + buffer;
-  overspan = studCenters;
-
-  translate([ 0, drywallThickness - nothing, 0 ]) {
-    translate([ 0, -cutout / 2, 0 ]) {
-      cube([ width, cutout * 2, height ]);
-    }
-
-    // Remove base plate
-    cube([ width + buffer, cutout, two_by_four_height + nothing ]);
-
-    // Cutout for trim and king studs
-    translate([ -overspan / 2, 0, two_by_four_height - nothing ]) {
-      cube([ width + overspan, cutout, height + 6 - two_by_four_height ]);
-    }
-
-    // Remove top area plate
-    translate([ -overspan / 2, 0, height + 6 ]) {
-      cube([ overspan, cutout, ceilingHeight - height - 6 - 1 * two_by_four_height + nothing ]);
-    }
-    translate([ width - overspan / 2, 0, height + 6 ]) {
-      cube([ overspan, cutout, ceilingHeight - height - 6 - 1 * two_by_four_height + nothing ]);
-    }
-  }
-}
+use<window.scad>;
 
 module double_door_frame(width = 60, height = 8 * 12, ceilingHeight = 8 * 12) {
   doorThickness = 1.5;
@@ -43,7 +16,7 @@ module double_door_frame(width = 60, height = 8 * 12, ceilingHeight = 8 * 12) {
       }
       // Left trim stud
       translate([ 0, -two_by_four_height, 0 ]) {
-        two_by_four(height);
+        two_by_four(height - two_by_four_height);
       }
 
       // King stud
@@ -52,7 +25,7 @@ module double_door_frame(width = 60, height = 8 * 12, ceilingHeight = 8 * 12) {
       }
       // Right trim stud
       translate([ 0, width, 0 ]) {
-        two_by_four(height);
+        two_by_four(height - two_by_four_height);
       }
     }
 
@@ -79,7 +52,7 @@ module double_door_frame(width = 60, height = 8 * 12, ceilingHeight = 8 * 12) {
 difference() {
   wall(8 * 12, 10 * 12, [ 0, 0 ]);
   translate([ (8 * 12 - 60) / 2, 0, 0 ]) {
-    double_door_cutout(60, 7 * 12, 10 * 12);
+    wall_cutout(60, 7 * 12, 0, 10 * 12);
   }
 }
 

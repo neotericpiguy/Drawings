@@ -42,17 +42,23 @@ module table(width = 42, length = 66, height = 28.5) {
 }
 
 module kitchen() {
-  module countertop(length = 24, cabinet_depth = 24) {
+  module countertop(length = 24, cabinet_depth = 24, countertop_overhang_direction = [ 0, 0 ]) {
     countertop_overhang = 1.5;
-    translate([ -countertop_overhang, -countertop_overhang, 34.5 ]) {
-      cube([ length + countertop_overhang, cabinet_depth + countertop_overhang, countertop_overhang ]);
+    translate([ 0, -countertop_overhang, base_cabinet_height ]) {
+      offset = countertop_overhang_direction[0] > 0 ? -countertop_overhang : (countertop_overhang_direction[0] < 0 ? countertop_overhang : 0);
+      translate([ offset, 0, 0 ]) {
+        cube([ length + (countertop_overhang_direction[0] + countertop_overhang_direction[1]) * countertop_overhang, countertop_overhang + cabinet_depth, countertop_overhang ]);
+      }
     }
   }
 
   // Peninsula
   translate([ 0, 0, 0 ]) {
+    translate([ -1.5, 0, 36 ]) {
+      dimentor(33 + 24 + 36 + 1.5, 12, 0, 4);
+    }
     base_cabinet(33);
-    countertop(33 + 24 + 36, 24 + 9);
+    countertop(33 + 24 + 36, 24 + 9, [ 1, 0 ]);
     translate([ 33, 0, 0 ]) {
       base_cabinet(24);
       translate([ 24, 0, 0 ]) {
@@ -70,7 +76,7 @@ module kitchen() {
   translate([ 33 + 36, 0, 0 ]) {
     rotate([ 0, 0, -90 ]) {
       base_cabinet(12);
-      countertop(12 + 36 + 12);
+      countertop(12 + 36 + 12, 24, [ -1, -1 ]);
       translate([ 12, 0, 0 ]) {
         base_cabinet(36);
         translate([ 36, 0, 0 ]) {
@@ -121,12 +127,12 @@ module dining() {
   eastWallLength = 115;
 
   // West Wall
-  translate([ 0, 0, 0 ]) {
-    rotate([ 0, 0, 180 ]) {
-      dimentor(westWallLength, 12, 0, 4);
-      wall(westWallLength + two_by_four_depth + drywallThickness, wallHeight, [ 0, -1 ]);
-    }
-  }
+  //  translate([ 0, 0, 0 ]) {
+  //    rotate([ 0, 0, 180 ]) {
+  //      dimentor(westWallLength, 12, 0, 4);
+  //      wall(westWallLength + two_by_four_depth + drywallThickness, wallHeight, [ 0, -1 ]);
+  //    }
+  //  }
 
   // North Wall
   translate([ -westWallLength, -drywallThickness, 0 ]) {
@@ -134,7 +140,7 @@ module dining() {
       difference() {
         wall(northWallLength, wallHeight, [ 0, 0 ]);
         translate([ northWallLeftReveal, 0, 0 ]) {
-          double_door_cutout(backDoorLength, backDoorHeight, wallHeight);
+          wall_cutout(backDoorLength, backDoorHeight, 0, wallHeight);
         }
       }
 
@@ -154,34 +160,46 @@ module dining() {
   // East Wall
   translate([ -westWallLength - two_by_four_depth - drywallThickness, northWallLength - drywallThickness * 2, 0 ]) {
     rotate([ 0, 0, 0 ]) {
-      dimentor(eastWallLength, 12, 0, 4);
-      dimentor(windowLeftReveal, 4, 0, 4);
-      translate([ windowLeftReveal, 0, 0 ]) {
-        dimentor(windowWidth, 4, 0, 4);
+      translate([ two_by_four_depth + drywallThickness, 0, 0 ]) {
+        dimentor(eastWallLength, 12, 0, 4);
+        dimentor(windowLeftReveal, 4, 0, 4);
+        translate([ windowLeftReveal, 0, 0 ]) {
+          dimentor(windowWidth, 4, 0, 4);
+        }
       }
 
       difference() {
-        wall(eastWallLength, wallHeight, [ -1, 0 ]);
-        translate([ windowLeftReveal, 0, 0 ]) {
-          window_cutout(windowWidth, windowHeight, windowHeightFromFloor, wallHeight);
+        wall(eastWallLength + two_by_four_depth + drywallThickness, wallHeight, [ -1, 0 ]);
+        translate([ two_by_four_depth + drywallThickness + windowLeftReveal, 0, 0 ]) {
+          wall_cutout(windowWidth, windowHeight, windowHeightFromFloor, wallHeight);
         }
       }
-      translate([ windowLeftReveal, 0, 0 ]) {
+      translate([ two_by_four_depth + drywallThickness + windowLeftReveal, 0, 0 ]) {
         window_frame(windowWidth, windowHeight, windowHeightFromFloor, wallHeight);
       }
     }
 
-    tableWidth = 42;
-    tablelength = 66;
-    tableHeight = 33.5;
-    spaceBetweenWindowAndTable = 12;
+    tableWidth = 40;
+    tablelength = 72;
+    tableHeight = 30;
+    spaceBetweenWindowAndTable = 24;
+    tablePlacementX = windowLeftReveal + (windowWidth - tableWidth) / 2 + 12;
 
-    translate([ windowLeftReveal + (windowWidth - tableWidth) / 2, -spaceBetweenWindowAndTable - tablelength, 0 ]) {
+    translate([ tablePlacementX, -spaceBetweenWindowAndTable - tablelength, 0 ]) {
       table(tableWidth, tablelength, tableHeight);
+
+      translate([ -tablePlacementX + two_by_four_depth + drywallThickness, tablelength, 0 ]) {
+        dimentor(tablePlacementX - two_by_four_depth - drywallThickness, -12, 0, 4);
+      }
+      translate([ 0, tablelength, 0 ]) {
+        rotate([ 0, 0, 90 ]) {
+          dimentor(spaceBetweenWindowAndTable, -12, 0, 4);
+        }
+      }
     }
   }
 
-  translate([ -4 + base_cabinet_depth + (eastWallLength - westWallLength), northWallLength - 33 - 24 - 36 - 1, 0 ]) {
+  translate([ base_cabinet_depth + (eastWallLength - westWallLength), northWallLength - 33 - 24 - 36 - 1, 0 ]) {
     rotate([ 0, 0, 90 ]) {
       kitchen();
     }

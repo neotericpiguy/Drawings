@@ -3,31 +3,53 @@ include<standards>;
 use<wall.scad>;
 use<two_by_four.scad>;
 
-module window_cutout(width = 60, height = 8 * 12, heightFromFloor = 24, ceilingHeight = 8 * 12) {
+module wall_cutout(width = 60, height = 8 * 12, heightFromFloor = 24, ceilingHeight = 8 * 12) {
+  // Buffer is added to ensure no z fighting
   buffer = 2 * nothing;
-  cutout = (two_by_four_depth + drywallThickness) + buffer;
+  // buffer = 2;
+  opening_cutout = (two_by_four_depth + drywallThickness) + buffer;
+  stud_cutout = two_by_four_depth + buffer;
+  trim_stud_and_king_stud_width = 2 * two_by_four_height + studCenters / 4;
 
-  // Window thing
+  // opening
+  // Cut out for studs in the way of opening
+  // Centered in the 2x4 wall
   translate([ 0, -buffer / 2, heightFromFloor ]) {
-    cube([ width, cutout, height ]);
+    cube([ width, opening_cutout, height ]);
   }
 
-  // Cutout
-  translate([ 0, drywallThickness - nothing, heightFromFloor - two_by_four_height * 2 ]) {
-    cube([ width, cutout, height + two_by_four_height * 2 + 6 ]);
+  // In the plane of the front face of the 2x4 wall instead of drywall
+  // and on top of the baseplate
+translate([ 0, drywallThickness - buffer / 2, two_by_four_height ]) {
+  // Left King stud
+  translate([ -trim_stud_and_king_stud_width, 0, 0 ]) {
+    cube([ trim_stud_and_king_stud_width, stud_cutout, ceilingHeight - two_by_four_height * 2 + buffer ]);
+  }
+  translate([ -buffer, 0, heightFromFloor + height - two_by_four_height ]) {
+    cube([ trim_stud_and_king_stud_width + buffer, stud_cutout, ceilingHeight - two_by_four_height + buffer - height - heightFromFloor ]);
   }
 
-  translate([ 0, drywallThickness - nothing, two_by_four_height ]) {
-    rotate([ 0, 0, 90 ]) {
-      cube([ two_by_four_depth + 2 * nothing, 3 * two_by_four_height, ceilingHeight - two_by_four_depth + drywallThickness + nothing ]);
+  // Right King stud
+  translate([ width, 0, 0 ]) {
+    cube([ trim_stud_and_king_stud_width, stud_cutout, ceilingHeight - two_by_four_height * 2 + buffer ]);
+  }
+  translate([ width - trim_stud_and_king_stud_width, 0, heightFromFloor + height - two_by_four_height ]) {
+    cube([ trim_stud_and_king_stud_width + buffer, stud_cutout, ceilingHeight - two_by_four_height + buffer - height - heightFromFloor ]);
+  }
+
+  // Header Cutout
+  translate([ trim_stud_and_king_stud_width, 0, heightFromFloor + height - two_by_four_height ]) {
+    cube([ width - 2 * trim_stud_and_king_stud_width, stud_cutout, 6 ]);
+  }
+
+  if (heightFromFloor > 0)
+  {
+    // rough Sill
+    translate([ 0, 0, heightFromFloor - two_by_four_height * 3 ]) {
+      cube([ width, stud_cutout, two_by_four_height * 2 ]);
     }
   }
-
-  translate([ 3 * two_by_four_height + width, drywallThickness - nothing, two_by_four_height ]) {
-    rotate([ 0, 0, 90 ]) {
-      cube([ two_by_four_depth + 2 * nothing, 3 * two_by_four_height, ceilingHeight - two_by_four_depth + drywallThickness + nothing ]);
-    }
-  }
+}
 }
 
 module window_frame(width = 60, height = 8 * 12, heightFromFloor = 24, ceilingHeight = 8 * 12) {
@@ -83,11 +105,10 @@ module window_frame(width = 60, height = 8 * 12, heightFromFloor = 24, ceilingHe
 difference() {
   wall(8 * 12, 8 * 12, [ 0, 0 ]);
   translate([ (8 * 12 - 60) / 2, 0, 0 ]) {
-    window_cutout(60, 60, 24, 8 * 12);
+    wall_cutout(60, 60, 24, 8 * 12);
   }
 }
 
-translate([ (8 * 12 - 60) / 2, 0, 0 ])
-{
-    window_frame(60, 60, 24, 8 * 12);
+translate([ (8 * 12 - 60) / 2, 0, 0 ]) {
+  window_frame(60, 60, 24, 8 * 12);
 }
