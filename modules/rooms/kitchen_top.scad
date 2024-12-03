@@ -43,20 +43,20 @@ module table(width = 42, length = 66, height = 28.5) {
 
 module kitchen() {
   module countertop(length = 24, cabinet_depth = 24, countertop_overhang_direction = [ 0, 0 ]) {
-    countertop_overhang = 1.5;
     translate([ 0, -countertop_overhang, base_cabinet_height ]) {
       offset = countertop_overhang_direction[0] > 0 ? -countertop_overhang : (countertop_overhang_direction[0] < 0 ? countertop_overhang : 0);
+      overallLength = length + (countertop_overhang_direction[0] + countertop_overhang_direction[1]) * countertop_overhang;
       translate([ offset, 0, 0 ]) {
-        cube([ length + (countertop_overhang_direction[0] + countertop_overhang_direction[1]) * countertop_overhang, countertop_overhang + cabinet_depth, countertop_overhang ]);
+        cube([ overallLength, countertop_overhang + cabinet_depth, countertop_overhang ]);
+        translate([ 0, 0, countertop_overhang ]) {
+          dimentor(overallLength, 12, 0, 4);
+        }
       }
     }
   }
 
   // Peninsula
   translate([ 0, 0, 0 ]) {
-    translate([ -1.5, 0, 36 ]) {
-      dimentor(33 + 24 + 36 + 1.5, 12, 0, 4);
-    }
     base_cabinet(33);
     countertop(33 + 24 + 36, 24 + 9, [ 1, 0 ]);
     translate([ 33, 0, 0 ]) {
