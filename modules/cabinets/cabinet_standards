@@ -12,6 +12,8 @@ DIM_SPACE = .1 * DOC_SCALING_FACTOR;
 
 dimOn = true;
 
+countertop_overhang = 1.5;
+
 base_cabinet_height = 34.5;
 base_cabinet_depth = 24;
 

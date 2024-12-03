@@ -57,3 +57,6 @@ function QuadReg_A(xs, ys) = y_bar(ys) - QuadReg_B(xs, ys) * x_bar(xs) - QuadReg
 
 function QuadReg(xs, ys) = [ QuadReg_A(xs, ys), QuadReg_B(xs, ys), QuadReg_C(xs, ys) ];
 
+// https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Conditional_and_Iterator_Functions
+function sumv(v, i, s = 0) = (i == s ? v[i] : v[i] + sumv(v, i - 1, s));
+

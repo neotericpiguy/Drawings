@@ -1,7 +1,7 @@
 include<standards>;
 
 include<cabinet_standards>;
-use<base_cabinet.scad>;
+use<kitchen.scad>;
 
 use<wall.scad>;
 use<double_door.scad>;
@@ -37,75 +37,6 @@ module table(width = 42, length = 66, height = 28.5) {
   translate([ 12, 0, height ]) {
     rotate([ 0, 0, 90 ]) {
       dimentor(length, 1, 0, 4);
-    }
-  }
-}
-
-module kitchen() {
-  module countertop(length = 24, cabinet_depth = 24, countertop_overhang_direction = [ 0, 0 ]) {
-    translate([ 0, -countertop_overhang, base_cabinet_height ]) {
-      offset = countertop_overhang_direction[0] > 0 ? -countertop_overhang : (countertop_overhang_direction[0] < 0 ? countertop_overhang : 0);
-      overallLength = length + (countertop_overhang_direction[0] + countertop_overhang_direction[1]) * countertop_overhang;
-      translate([ offset, 0, 0 ]) {
-        cube([ overallLength, countertop_overhang + cabinet_depth, countertop_overhang ]);
-        translate([ 0, 0, countertop_overhang ]) {
-          dimentor(overallLength, 12, 0, 4);
-        }
-      }
-    }
-  }
-
-  // Peninsula
-  translate([ 0, 0, 0 ]) {
-    base_cabinet(33);
-    countertop(33 + 24 + 36, 24 + 9, [ 1, 0 ]);
-    translate([ 33, 0, 0 ]) {
-      base_cabinet(24);
-      translate([ 24, 0, 0 ]) {
-        base_cabinet(36);
-      }
-    }
-  }
-
-  // Sink Side
-  translate([ 33 + 24 + 36, 24, 0 ]) {
-    rotate([ 0, 0, -90 ]) {
-      wall(36 + 36 + 36 + drywallThickness + two_by_four_depth, wallHeight, [ 0, -1 ]);
-    }
-  }
-  translate([ 33 + 36, 0, 0 ]) {
-    rotate([ 0, 0, -90 ]) {
-      base_cabinet(12);
-      countertop(12 + 36 + 12, 24, [ -1, -1 ]);
-      translate([ 12, 0, 0 ]) {
-        base_cabinet(36);
-        translate([ 36, 0, 0 ]) {
-          base_cabinet(12);
-        }
-      }
-    }
-  }
-
-  // Stove Side
-  //  translate([ 33 + 24 + 36 + drywallThickness, -36 * 2 - 12, 0 ]) {
-  //    rotate([ 0, 0, 180 ]) {
-  //      wall(36 + 36 + 36 + drywallThickness + two_by_four_depth, wallHeight, [ 0, -1 ]);
-  //    }
-  //  }
-
-  translate([ 33 + 36 + 24, -(12 + 36 + 12), 0 ]) {
-    rotate([ 0, 0, 180 ]) {
-      countertop(36 + 12 + 30 + 21);
-      base_cabinet(36);
-      translate([ 36, 0, 0 ]) {
-        base_cabinet(12);
-        translate([ 12, 0, 0 ]) {
-          base_cabinet(30);
-          translate([ 30, 0, 0 ]) {
-            base_cabinet(21);
-          }
-        }
-      }
     }
   }
 }
