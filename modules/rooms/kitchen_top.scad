@@ -130,7 +130,7 @@ module dining() {
     }
   }
 
-  translate([ base_cabinet_depth + (eastWallLength - westWallLength), northWallLength - 33 - 24 - 36 - 1, 0 ]) {
+  translate([ eastWallLength - westWallLength, northWallLength - two_by_four_height + drywallThickness, 0 ]) {
     rotate([ 0, 0, 90 ]) {
       kitchen();
     }
