@@ -13,7 +13,7 @@ module base_cabinet(base_cabinet_width = 24) {
   }
 
   translate([ ear, stile_thickness, toekick_height ]) {
-box(base_cabinet_width);
+    box(base_cabinet_width);
   }
 }
 
