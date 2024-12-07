@@ -39,7 +39,7 @@ module kitchen() {
     stove_length = sumv(stove_cabs, len(stove_cabs) - 1);
     translate([ peninsula_length + drywallThickness, -sink_length - base_cabinet_depth, 0 ]) {
       rotate([ 0, 0, 180 ]) {
-        // wall(stove_length + drywallThickness + two_by_four_depth, wallHeight, [ 0, 0 ]);
+//        wall(stove_length + drywallThickness + two_by_four_depth, wallHeight, [ 0, 0 ]);
       }
     }
     translate([ peninsula_length, -(sink_length), 0 ]) {
