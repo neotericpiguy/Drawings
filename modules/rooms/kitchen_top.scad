@@ -6,6 +6,7 @@ use<kitchen.scad>;
 use<wall.scad>;
 use<double_door.scad>;
 use<window.scad>;
+use<wall_run.scad>;
 
 wallHeight = 116;
 
@@ -42,97 +43,53 @@ module table(width = 42, length = 66, height = 28.5) {
 }
 
 module dining() {
-  westWallLength = 92;
-  southWallLength = 8 * 12;
-  backDoorLength = 60;
-  backDoorHeight = 80;
+  west_wall_length = 92;
+  south_wall_length = 8 * 12;
 
-  northWallLeftReveal = 48;
-  northWallRightReveal = 52;
-  northWallLength = northWallLeftReveal + backDoorLength + northWallRightReveal;
+  north_wall_left_reveal = 48;
+  backdoor_length = 60;
+  backdoor_height = 80;
+  north_wall_right_reveal = 52;
+  north_wall_length = north_wall_left_reveal + backdoor_length + north_wall_right_reveal;
 
-  windowLeftReveal = 17;
-  windowHeightFromFloor = 23;
-  windowWidth = 58.5;
-  windowHeight = 58.5;
-  eastWallLength = 115;
+  window_left_reveal = 17;
+  window_height_from_floor = 23;
+  window_length = 58.5;
+  window_height = 58.5;
+  east_wall_length = 115;
 
-  // West Wall
-  //  translate([ 0, 0, 0 ]) {
-  //    rotate([ 0, 0, 180 ]) {
-  //      dimentor(westWallLength, 12, 0, 4);
-  //      wall(westWallLength + two_by_four_depth + drywallThickness, wallHeight, [ 0, -1 ]);
-  //    }
-  //  }
+  roomWalls = [[west_wall_length, 0],
+               [north_wall_length, -90, [[backdoor_length, backdoor_height], north_wall_left_reveal, 0]],
+               [east_wall_length, -90, [[window_length, window_height], window_left_reveal, window_height_from_floor]],
+  ];
 
-  // North Wall
-  translate([ -westWallLength, -drywallThickness, 0 ]) {
-    rotate([ 0, 0, 90 ]) {
-      difference() {
-        wall(northWallLength, wallHeight, [ 0, 0 ]);
-        translate([ northWallLeftReveal, 0, 0 ]) {
-          wall_cutout(backDoorLength, backDoorHeight, 0, wallHeight);
-        }
-      }
-
-      translate([ northWallLeftReveal, 0, 0 ]) {
-        double_door_frame(backDoorLength, backDoorHeight, wallHeight);
-        dimentor(backDoorLength, 6, 0, 4);
-        translate([ backDoorLength, 0, 0 ]) {
-          dimentor(northWallRightReveal, 6, 0, 4);
-        }
-      }
-
-      dimentor(northWallLength, 12, 0, 4);
-      dimentor(northWallLeftReveal, 6, 0, 4);
-    }
+  rotate([ 0, 0, 180 ]) {
+    wall_run(roomWalls);
   }
 
-  // East Wall
-  translate([ -westWallLength - two_by_four_depth - drywallThickness, northWallLength - drywallThickness * 2, 0 ]) {
+  translate([ east_wall_length - west_wall_length, north_wall_length, 0 ]) {
     rotate([ 0, 0, 0 ]) {
-      translate([ two_by_four_depth + drywallThickness, 0, 0 ]) {
-        dimentor(eastWallLength, 12, 0, 4);
-        dimentor(windowLeftReveal, 4, 0, 4);
-        translate([ windowLeftReveal, 0, 0 ]) {
-          dimentor(windowWidth, 4, 0, 4);
-        }
-      }
-
-      difference() {
-        wall(eastWallLength + two_by_four_depth + drywallThickness, wallHeight, [ -1, 0 ]);
-        translate([ two_by_four_depth + drywallThickness + windowLeftReveal, 0, 0 ]) {
-          wall_cutout(windowWidth, windowHeight, windowHeightFromFloor, wallHeight);
-        }
-      }
-      translate([ two_by_four_depth + drywallThickness + windowLeftReveal, 0, 0 ]) {
-        window_frame(windowWidth, windowHeight, windowHeightFromFloor, wallHeight);
-      }
-    }
-
-    tableWidth = 40;
-    tablelength = 72;
-    tableHeight = 30;
-    spaceBetweenWindowAndTable = 24;
-    tablePlacementX = windowLeftReveal + (windowWidth - tableWidth) / 2 + 12;
-
-    translate([ tablePlacementX, -spaceBetweenWindowAndTable - tablelength, 0 ]) {
-      table(tableWidth, tablelength, tableHeight);
-
-      translate([ -tablePlacementX + two_by_four_depth + drywallThickness, tablelength, 0 ]) {
-        dimentor(tablePlacementX - two_by_four_depth - drywallThickness, -12, 0, 4);
-      }
-      translate([ 0, tablelength, 0 ]) {
-        rotate([ 0, 0, 90 ]) {
-          dimentor(spaceBetweenWindowAndTable, -12, 0, 4);
-        }
-      }
+      kitchen();
     }
   }
 
-  translate([ eastWallLength - westWallLength, northWallLength - two_by_four_height + drywallThickness, 0 ]) {
-    rotate([ 0, 0, 90 ]) {
-      kitchen();
+  table_width = 40;
+  table_length = 72;
+  tableHeight = 30;
+  spaceBetweenWindowAndTable = 24;
+  tablePlacementX = window_left_reveal + (window_length - table_width) / 2 + 6;
+
+  translate([ -west_wall_length + tablePlacementX, north_wall_length - table_length - spaceBetweenWindowAndTable, 0 ]) {
+    table(table_width, table_length, tableHeight);
+
+    translate([ -tablePlacementX, table_length / 2, 0 ]) {
+      dim_length(tablePlacementX, 0, tableHeight);
+    }
+
+    translate([ table_width / 2, table_length, 0 ]) {
+      rotate([ 0, 0, 90 ]) {
+        dim_length(spaceBetweenWindowAndTable, 0, tableHeight);
+      }
     }
   }
 }

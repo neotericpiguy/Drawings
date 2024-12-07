@@ -224,6 +224,9 @@ Repo to learn the art of openscad
 ## preview/modules/wall/wall.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/wall/wall.png" width="650">
 
+## preview/modules/wall/wall_run.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/wall/wall_run.png" width="650">
+
 ## preview/modules/wall/wall_stud.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/wall/wall_stud.png" width="650">
 

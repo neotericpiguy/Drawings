@@ -1,5 +1,13 @@
 include<cabinet_standards>;
 
+module dim_length(length = 42, offset = 12, height = 8 * 12) {
+  color([ 0, 0, 0 ]) {
+    translate([ 0, offset, height ]) {
+      dimensions(length);
+    }
+  }
+}
+
 module dimentor(width, depth, height, offset = 2, side = 0) {
   if (dimOn)
   {
@@ -15,7 +23,7 @@ module dimentor(width, depth, height, offset = 2, side = 0) {
         }
       }
 
-      if (width > 0 && height !=0)
+      if (width > 0 && height != 0)
       {
         // Width
         translate([ 0, depth + offset, 0 ]) {
@@ -25,7 +33,7 @@ module dimentor(width, depth, height, offset = 2, side = 0) {
             dimensions(width);
         }
       }
-      if (depth > 0 && height !=0)
+      if (depth > 0 && height != 0)
       {
         // Depth
         translate([ -offset, 0, 0 ]) {
