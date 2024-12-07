@@ -19,6 +19,8 @@ nothing=0.01;
 
 enableDrywall = 1;
 
+function abs(x) = x >0 ? x :-x;
+
 ////////////////////////////////////////////////////////////////////////////////
 // Statistic functions
 // https://keisan.casio.com/exec/system/14059932254941
