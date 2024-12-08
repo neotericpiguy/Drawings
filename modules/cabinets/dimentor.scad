@@ -3,7 +3,11 @@ include<cabinet_standards>;
 module dim_length(length = 42, offset = 12, height = 8 * 12) {
   color([ 0, 0, 0 ]) {
     translate([ 0, offset, height ]) {
+      if(length<6)
+      dimensions(length, loc = 1);
+      else
       dimensions(length);
+
     }
   }
 }

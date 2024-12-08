@@ -20,36 +20,36 @@ module wall_cutout(width = 60, height = 8 * 12, heightFromFloor = 24, ceilingHei
 
   // In the plane of the front face of the 2x4 wall instead of drywall
   // and on top of the baseplate
-translate([ 0, drywallThickness - buffer / 2, two_by_four_height ]) {
-  // Left King stud
-  translate([ -trim_stud_and_king_stud_width, 0, 0 ]) {
-    cube([ trim_stud_and_king_stud_width, stud_cutout, ceilingHeight - two_by_four_height * 2 + buffer ]);
-  }
-  translate([ -buffer, 0, heightFromFloor + height - two_by_four_height ]) {
-    cube([ trim_stud_and_king_stud_width + buffer, stud_cutout, ceilingHeight - two_by_four_height + buffer - height - heightFromFloor ]);
-  }
+  translate([ 0, drywallThickness - buffer / 2, two_by_four_height ]) {
+    // Left King stud
+    translate([ -trim_stud_and_king_stud_width, 0, 0 ]) {
+      cube([ trim_stud_and_king_stud_width, stud_cutout, ceilingHeight - two_by_four_height * 2 + buffer ]);
+    }
+    translate([ -buffer, 0, heightFromFloor + height - two_by_four_height ]) {
+      cube([ trim_stud_and_king_stud_width + buffer, stud_cutout, ceilingHeight - two_by_four_height + buffer - height - heightFromFloor ]);
+    }
 
-  // Right King stud
-  translate([ width, 0, 0 ]) {
-    cube([ trim_stud_and_king_stud_width, stud_cutout, ceilingHeight - two_by_four_height * 2 + buffer ]);
-  }
-  translate([ width - trim_stud_and_king_stud_width, 0, heightFromFloor + height - two_by_four_height ]) {
-    cube([ trim_stud_and_king_stud_width + buffer, stud_cutout, ceilingHeight - two_by_four_height + buffer - height - heightFromFloor ]);
-  }
+    // Right King stud
+    translate([ width, 0, 0 ]) {
+      cube([ trim_stud_and_king_stud_width, stud_cutout, ceilingHeight - two_by_four_height * 2 + buffer ]);
+    }
+    translate([ width - trim_stud_and_king_stud_width, 0, heightFromFloor + height - two_by_four_height ]) {
+      cube([ trim_stud_and_king_stud_width + buffer, stud_cutout, ceilingHeight - two_by_four_height + buffer - height - heightFromFloor ]);
+    }
 
-  // Header Cutout
-  translate([ trim_stud_and_king_stud_width, 0, heightFromFloor + height - two_by_four_height ]) {
-    cube([ width - 2 * trim_stud_and_king_stud_width, stud_cutout, 6 ]);
-  }
+    // Header Cutout
+    translate([ trim_stud_and_king_stud_width, 0, heightFromFloor + height - two_by_four_height ]) {
+      cube([ width - 2 * trim_stud_and_king_stud_width, stud_cutout, 6 ]);
+    }
 
-  if (heightFromFloor > 0)
-  {
-    // rough Sill
-    translate([ 0, 0, heightFromFloor - two_by_four_height * 3 ]) {
-      cube([ width, stud_cutout, two_by_four_height * 2 ]);
+    if (heightFromFloor > 0)
+    {
+      // rough Sill
+      translate([ 0, 0, heightFromFloor - two_by_four_height * 3 ]) {
+        cube([ width, stud_cutout, two_by_four_height * 2 ]);
+      }
     }
   }
-}
 }
 
 module window_frame(width = 60, height = 8 * 12, heightFromFloor = 24, ceilingHeight = 8 * 12) {

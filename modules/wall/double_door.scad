@@ -36,15 +36,24 @@ module double_door_frame(width = 60, height = 8 * 12, ceilingHeight = 8 * 12) {
   }
 
   // Doors
-  rotate([ 0, 0, -angle ]) {
-    cube([ width / 2, doorThickness, height ]);
-  }
+  if (width > 36)
+  {
+    rotate([ 0, 0, -angle ]) {
+      cube([ width / 2, doorThickness, height ]);
+    }
 
-  translate([ width, 0, 0 ]) {
-    rotate([ 0, 0, angle ]) {
-      mirror([ 1, 0, 0 ]) {
-        cube([ width / 2, doorThickness, height ]);
+    translate([ width, 0, 0 ]) {
+      rotate([ 0, 0, angle ]) {
+        mirror([ 1, 0, 0 ]) {
+          cube([ width / 2, doorThickness, height ]);
+        }
       }
+    }
+  }
+  else
+  {
+    rotate([ 0, 0, -angle ]) {
+      cube([ width , doorThickness, height ]);
     }
   }
 }
