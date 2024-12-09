@@ -1,6 +1,9 @@
 include<cabinet_standards>;
 
-module box(base_cabinet_width = 36) {
+module box(base_cabinet_width = 36, depth = base_cabinet_depth) {
+  box_depth = depth- stile_thickness;
+  box_height = stile_height;
+
   box_width = base_cabinet_width - 2 * ear;
   // Left Side
   cube([ box_thickness, box_depth, box_height ]);
@@ -12,7 +15,7 @@ module box(base_cabinet_width = 36) {
 
   // Floor
   translate([ box_thickness, 0, stile_thickness ]) {
-cube([ box_width - 2 * box_thickness, box_depth, box_thickness ]);
+    cube([ box_width - 2 * box_thickness, box_depth, box_thickness ]);
   }
 
   // Backing

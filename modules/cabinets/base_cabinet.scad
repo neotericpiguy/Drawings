@@ -3,26 +3,29 @@ use<platform.scad>;
 use<faceframe.scad>;
 use<box.scad>;
 
-module base_cabinet(base_cabinet_width = 24) {
+module base_cabinet(base_cabinet_width = 24, depth = base_cabinet_depth) {
   translate([ 0, 0, base_cabinet_height - stile_height ]) {
     faceframe(base_cabinet_width);
   }
 
   translate([ ear, toekick_depth, 0 ]) {
-    platform(base_cabinet_width);
+    platform(base_cabinet_width, depth);
   }
 
   translate([ ear, stile_thickness, toekick_height ]) {
-    box(base_cabinet_width);
+    box(base_cabinet_width,depth);
   }
 }
 
 module cabinet_run(cabinet_vec) {
-  base_cabinet(cabinet_vec[0]);
+  if (cabinet_vec[0] > 0)
+  {
+    base_cabinet(cabinet_vec[0]);
+  }
 
   if (len(cabinet_vec) > 1)
   {
-    translate([ cabinet_vec[0], 0, 0 ]) {
+    translate([ abs(cabinet_vec[0]), 0, 0 ]) {
       cabinet_run([for (index = [1:len(cabinet_vec) - 1]) cabinet_vec[index]]);
     }
   }
@@ -34,7 +37,9 @@ module countertop(length = 24, cabinet_depth = 24, countertop_overhang_direction
     overallLength = length + (countertop_overhang_direction[0] + countertop_overhang_direction[1]) * countertop_overhang;
 
     translate([ offset, 0, 0 ]) {
-      cube([ overallLength, countertop_overhang + cabinet_depth, countertop_overhang ]);
+      color([ 0.7, 0.7, 0.8 ]) {
+        cube([ overallLength, countertop_overhang + cabinet_depth, countertop_overhang ]);
+      }
       translate([ 0, 0, countertop_overhang ]) {
         dimentor(overallLength, 12, 0, 4);
       }
@@ -44,3 +49,7 @@ module countertop(length = 24, cabinet_depth = 24, countertop_overhang_direction
 
 // Exterior
 base_cabinet(36);
+
+translate([ 48, 0, 0 ]) {
+  base_cabinet(36, 21);
+}

@@ -185,6 +185,21 @@ Repo to learn the art of openscad
 ## preview/modules/rooms/dining_top_view.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/dining_top_view.png" width="650">
 
+## preview/modules/rooms/kitchen_area_front_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/kitchen_area_front_view.png" width="650">
+
+## preview/modules/rooms/kitchen_area_iso_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/kitchen_area_iso_view.png" width="650">
+
+## preview/modules/rooms/kitchen_area_side_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/kitchen_area_side_view.png" width="650">
+
+## preview/modules/rooms/kitchen_area_top.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/kitchen_area_top.png" width="650">
+
+## preview/modules/rooms/kitchen_area_top_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/kitchen_area_top_view.png" width="650">
+
 ## preview/modules/rooms/kitchen_bak.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/kitchen_bak.png" width="650">
 
