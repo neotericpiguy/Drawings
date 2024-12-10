@@ -93,19 +93,4 @@ module stove(width = 30, depth = 27, height = 36) {
   }
 }
 
-module entry() {
-  entry_closet_width = 18;
-  roomWalls = [
-    [ 32, 0 ],
-    [ 56.25, 90 ],
-    [ 37.5, 45 ],
-    [ 51.5, 45 ],
-    [ 17, -45 ],
-    [ 9.5 + entry_closet_width + 6, 45, [[entry_closet_width, 80], 9.5, 0] ],
-    [ 4 + 36 + 4.5 + 10.5 + 5.5, -90, [ [ 36, 80 ], 4, 0 ] ],
-    [ 130, -90 ],
-  ];
-  wall_run(roomWalls);
-}
-
 kitchen();

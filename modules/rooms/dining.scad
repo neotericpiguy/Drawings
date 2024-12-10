@@ -60,8 +60,8 @@ module dining(
 
   rotate([ 0, 0, 180 ]) {
     wall_run(roomWalls);
-    translate([ west_wall_length-60, -base_cabinet_depth, 0 ]) {
-      base_cabinet(60);
+    translate([ west_wall_length - 60, -vanity_cabinet_depth, 0 ]) {
+      base_cabinet(60, vanity_cabinet_depth);
     }
   }
 

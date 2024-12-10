@@ -16,6 +16,7 @@ countertop_overhang = 1.5;
 
 base_cabinet_height = 34.5;
 base_cabinet_depth = 24;
+vanity_cabinet_depth = 21;
 
 ear = 0.25; toekick_height = 3.5;
 toekick_depth = 3.5;

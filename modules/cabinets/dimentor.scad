@@ -1,13 +1,12 @@
 include<cabinet_standards>;
 
-module dim_length(length = 42, offset = 12, height = 8 * 12) {
+module dim_length(length = 42, offset = 12, height = 8 * 12, location = 1) {
   color([ 0, 0, 0 ]) {
     translate([ 0, offset, height ]) {
-      if(length<6)
-      dimensions(length, loc = 1);
+      if (length < 6)
+        dimensions(length, loc = location);
       else
-      dimensions(length);
-
+        dimensions(length);
     }
   }
 }

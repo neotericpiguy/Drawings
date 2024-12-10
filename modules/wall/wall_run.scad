@@ -213,6 +213,8 @@ module wall_run(wallVec, rotation = 0, wall_offset = 0) {
     reveal = wallVec[0][2][1];
     heightFromFloor = wallVec[0][2][2];
 
+    opening_type = len(wallVec[0][2]) > 3 ? wallVec[0][2][3] : "hinged";
+
     // Create wall and cutout
     difference() {
       translate([ 0, 0, 0 ]) {
@@ -230,7 +232,7 @@ module wall_run(wallVec, rotation = 0, wall_offset = 0) {
       // Add frame for door or a window
       if (heightFromFloor == 0)
       {
-        double_door_frame(cutout_width, cutout_height, wallHeight);
+        double_door_frame(cutout_width, cutout_height, wallHeight, type = opening_type);
       }
       else
       {
@@ -240,7 +242,7 @@ module wall_run(wallVec, rotation = 0, wall_offset = 0) {
     }
 
     translate([ reveal + cutout_width, 0, 0 ]) {
-      dim_length(wall_length - cutout_width - reveal, wall_run_outside2_dim, wallHeight);
+      dim_length(wall_length - cutout_width - reveal, wall_run_outside2_dim, wallHeight, 2);
     }
   }
   else
