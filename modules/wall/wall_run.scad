@@ -221,6 +221,33 @@ module cutout_dim_run(cutout_v) {
   }
 }
 
+module cutout_frame_run(cutout_v) {
+  c = cutout_v[0];
+  cutout_width = c[0][0];
+  cutout_height = c[0][1];
+  reveal = c[1];
+  heightFromFloor = c[2];
+  opening_type = len(c) > 3 ? c[3] : "hinged";
+
+  translate([ reveal, 0, 0 ]) {
+    if (heightFromFloor == 0)
+    {
+      double_door_frame(cutout_width, cutout_height, wallHeight, type = opening_type);
+    }
+    else
+    {
+      window_frame(cutout_width, cutout_height, heightFromFloor, wallHeight);
+    }
+  }
+
+  if (len(cutout_v) > 1)
+  {
+    translate([ cutout_width + reveal, 0, 0 ]) {
+      cutout_frame_run([for (index = [1:len(cutout_v) - 1]) cutout_v[index]]);
+    }
+  }
+}
+
 module wall_run(wallVec, rotation = 0, wall_offset = 0) {
   wall_length = abs(wallVec[0][0]);
   wall_dir = wallVec[0][1];
@@ -245,74 +272,26 @@ module wall_run(wallVec, rotation = 0, wall_offset = 0) {
   length_offset = 0;
   if (len(wallVec[0]) == 3)
   {
-    //    echo("new");
-    //    echo(len(wallVec[0][2]));
-    //    echo(len(wallVec[0][2][0]));
-    //    echo(wallVec[0][2][0][0] == undef);
-    //    echo(is_num(wallVec[0][2][1]));
-    //    echo(is_list(wallVec[0][2][1]));
-    // Mono cutout delcaration like
-    // [ 69, 90, [ [ 46, 81 ], 12, 0, "sliding" ] ],
-    if (is_list(wallVec[0][2][1]))
-    {
-      cutout_vec = wallVec[0][2];
-      //      echo("number_of_cutouts: ", number_of_cutouts);
-      difference() {
-        translate([ 0, 0, 0 ]) {
-          color([ 1, 1, 1 ]) {
-            cube([ wall_length + length_offset, wall_thickness, wallHeight ]);
-          }
+    cutout_vec = is_list(wallVec[0][2][1]) ? wallVec[0][2] : [wallVec[0][2]];
+    difference() {
+      translate([ 0, 0, 0 ]) {
+        color([ 1, 1, 1 ]) {
+          cube([ wall_length + length_offset, wall_thickness, wallHeight ]);
         }
-        cutout_run(cutout_vec);
       }
-      // will handle left reveal and cutout width
-      cutout_dim_run(cutout_vec);
-
-      // Final right reveal
-      right_reveals = [for (x = cutout_vec) x[0][0] + x[1]];
-      right_reveal = sumv(right_reveals, len(right_reveals) - 1);
-      translate([ right_reveal, 0, 0 ]) {
-        dim_length(wall_length - right_reveal, wall_run_outside2_dim - 3, wallHeight);
-      }
+      cutout_run(cutout_vec);
     }
-    else if (is_num(wallVec[0][2][1]))
-    {
-      cutout_width = wallVec[0][2][0][0];
-      cutout_height = wallVec[0][2][0][1];
-      reveal = wallVec[0][2][1];
-      heightFromFloor = wallVec[0][2][2];
 
-      opening_type = len(wallVec[0][2]) > 3 ? wallVec[0][2][3] : "hinged";
+    cutout_frame_run(cutout_vec);
 
-      // Create wall and cutout
-      difference() {
-        translate([ 0, 0, 0 ]) {
-          color([ 1, 1, 1 ]) {
-            cube([ wall_length + length_offset, wall_thickness, wallHeight ]);
-          }
-        }
-        translate([ reveal, 0, 0 ]) {
-          wall_cutout(cutout_width, cutout_height, heightFromFloor);
-        }
-      }
-      dim_length(reveal, wall_run_outside2_dim, wallHeight);
+    // will handle left reveal and cutout width
+    cutout_dim_run(cutout_vec);
 
-      translate([ reveal, 0, 0 ]) {
-        // Add frame for door or a window
-        if (heightFromFloor == 0)
-        {
-          double_door_frame(cutout_width, cutout_height, wallHeight, type = opening_type);
-        }
-        else
-        {
-          window_frame(cutout_width, cutout_height, heightFromFloor, wallHeight);
-        }
-        dim_length(cutout_width, wall_run_outside2_dim, wallHeight);
-      }
-
-      translate([ reveal + cutout_width, 0, 0 ]) {
-        dim_length(wall_length - cutout_width - reveal, wall_run_outside2_dim, wallHeight, 2);
-      }
+    // Final right reveal
+    right_reveals = [for (x = cutout_vec) x[0][0] + x[1]];
+    right_reveal = sumv(right_reveals, len(right_reveals) - 1);
+    translate([ right_reveal, 0, 0 ]) {
+      dim_length(wall_length - right_reveal, wall_run_outside2_dim - 3, wallHeight);
     }
   }
   else
