@@ -1,6 +1,7 @@
 include<cabinet_standards>;
 
-module faceframe(base_cabinet_width = 36) {
+module faceframe(base_cabinet_width = 36, height = 31) {
+  stile_height = height - toekick_height;
   // Left Stile
   cube([ stile_width, stile_thickness, stile_height ]);
 

@@ -3,17 +3,29 @@ use<platform.scad>;
 use<faceframe.scad>;
 use<box.scad>;
 
-module base_cabinet(base_cabinet_width = 24, depth = base_cabinet_depth) {
-  translate([ 0, 0, base_cabinet_height - stile_height ]) {
-    faceframe(base_cabinet_width);
+module base_cabinet(base_cabinet_width = 24, depth = base_cabinet_depth, height = base_cabinet_height) {
+  translate([ 0, 0, toekick_height ]) {
+    cabinet([ base_cabinet_width, depth, height ]);
   }
 
   translate([ ear, toekick_depth, 0 ]) {
     platform(base_cabinet_width, depth);
   }
+}
 
-  translate([ ear, stile_thickness, toekick_height ]) {
-    box(base_cabinet_width,depth);
+module cabinet(dim = [ 24, 24, base_cabinet_height ]) {
+  width = dim[0];
+  depth = dim[1];
+  height = dim[2];
+
+  stile_height = height - toekick_height;
+  // translate([ 0, 0, height - stile_height ]) {
+  translate([ 0, 0, 0 ]) {
+    faceframe(width, height = height);
+  }
+
+  translate([ ear, stile_thickness, 0 ]) {
+    box(width, depth, height);
   }
 }
 

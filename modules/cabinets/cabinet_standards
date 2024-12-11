@@ -25,7 +25,6 @@ rail_height = 1.75;
 rail_thickness = 0.75;
 
 stile_width = 1.75;
-stile_height = base_cabinet_height - toekick_height;
 stile_thickness = 0.75;
 
 box_thickness = 0.75;
