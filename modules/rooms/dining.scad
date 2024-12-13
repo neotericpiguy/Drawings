@@ -58,11 +58,23 @@ module dining(
   window_left_reveal = roomWalls[2][2][1];
   window_length = roomWalls[2][2][0][0];
 
+  hutch_width = 60;
+  hutch_depth = 18;
+  hutch_height = 32;
   rotate([ 0, 0, 180 ]) {
     wall_run(roomWalls);
-    translate([ west_wall_length - 60, -vanity_cabinet_depth, 0 ]) {
-      base_cabinet(60, vanity_cabinet_depth);
+    translate([ west_wall_length - hutch_width, -hutch_depth, 0 ]) {
+      base_cabinet(hutch_width, depth = hutch_depth, height = hutch_height);
     }
+    translate([ west_wall_length - hutch_width, 0, 0 ]) {
+      dim_length(hutch_width, -3, hutch_height);
+    }
+    translate([ west_wall_length - hutch_width, -hutch_depth, 0 ]) {
+      rotate([ 0, 0, 90 ]) {
+        dim_length(hutch_depth, -3, hutch_height);
+      }
+    }
+        dim_length(west_wall_length-hutch_width, -3, hutch_height);
   }
 
   // 30x40x78

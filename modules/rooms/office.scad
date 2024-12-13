@@ -162,9 +162,9 @@ module office() {
     dim_length(closet_to_desk_space, roomWalls[1][0] - desk_dim[1], 0);
   }
 
-  bookshelf_dim = [ 30, 16.5, 6 * 12 ];
+  bookshelf_dim = [ 32, 12, 7 * 12 ];
   translate([ roomWalls[0][0] + (closet_to_desk_space - bookshelf_dim[0]), roomWalls[1][0] - bookshelf_dim[1] ]) {
-    bookshelf(bookshelf_dim);
+    bookshelf(bookshelf_dim, 7);
   }
 
   futon_dim = [ 62, 26, 36 ];
