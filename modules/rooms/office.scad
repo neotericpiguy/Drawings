@@ -168,7 +168,7 @@ module office() {
   }
 
   futon_dim = [ 62, 26, 36 ];
-  futon_space_from_south_wall = 12;
+  futon_space_from_south_wall = 3;
   translate([ roomWalls[4][0] - futon_space_from_south_wall, roomWalls[1][0] - roomWalls[3][0] + desk_dim[1] ]) {
     rotate([ 0, 0, 180 ]) {
       futon(futon_dim);
