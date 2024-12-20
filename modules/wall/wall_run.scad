@@ -14,6 +14,9 @@ wall_run_outside2_dim = wall_run_outside_dim - two_by_four_depth + drywallThickn
 wall_run_inside_dim = -two_by_four_depth;
 wall_run_height = wallHeight;
 
+function wall_x_offset(v, i, s = 0, ang = 0) = (i == s ? v[s][0] * cos(ang + v[s][1]) : v[s][0] * cos(ang + v[s][1]) + wall_x_offset(v, i, s + 1, ang + v[s][1]));
+function wall_y_offset(v, i, s = 1, ang = 0) = (i == s ? v[s][0] * sin(ang + v[s][1]) : v[s][0] * sin(ang + v[s][1]) + wall_y_offset(v, i, s + 1, ang + v[s][1]));
+
 module wall_run_studs(wallVec, rotation = 0, wall_offset = 0) {
   wallLength = abs(wallVec[0][0]);
 

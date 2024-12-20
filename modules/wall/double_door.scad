@@ -35,7 +35,7 @@ module double_door_frame(width = 60, height = 8 * 12, ceilingHeight = 8 * 12, ty
   //    }
   //  }
 
-  if (type == "hinged")
+  if (type == "hinged" || type == "-hinged")
   {
     // Doors
     if (width > 36)
@@ -43,26 +43,31 @@ module double_door_frame(width = 60, height = 8 * 12, ceilingHeight = 8 * 12, ty
       rotate([ 0, 0, -angle ]) {
         cube([ width / 2, doorThickness, height ]);
       }
-
-      translate([ width, 0, 0 ]) {
-        rotate([ 0, 0, angle ]) {
-          mirror([ 1, 0, 0 ]) {
-            cube([ width / 2, doorThickness, height ]);
-          }
-        }
-      }
     }
     else
     {
-      rotate([ 0, 0, -angle ]) {
-        cube([ width, doorThickness, height ]);
+      if (type == "hinged")
+      {
+        rotate([ 0, 0, -angle ]) {
+          cube([ width, doorThickness, height ]);
+        }
+      }
+      else
+      {
+        translate([ width, 0, 0]) {
+          rotate([ 0, 0, angle ]) {
+            mirror([ 1, 0, 0 ]) {
+              cube([ width, doorThickness, height ]);
+            }
+          }
+        }
       }
     }
   }
   else if (type == "sliding")
   {
     opening = 6;
-    door_over_length=0.75;
+    door_over_length = 0.75;
     translate([ 0, 0, 0 * 12 ]) {
       cube([ (width / 2) + door_over_length, doorThickness, height ]);
 

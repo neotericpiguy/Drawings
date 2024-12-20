@@ -74,7 +74,7 @@ module dining(
         dim_length(hutch_depth, -3, hutch_height);
       }
     }
-        dim_length(west_wall_length-hutch_width, -3, hutch_height);
+    dim_length(west_wall_length - hutch_width, -3, hutch_height);
   }
 
   // 30x40x78
