@@ -8,6 +8,8 @@ use<bathroom.scad>;
 use<master_bedroom.scad>;
 use<living_room.scad>;
 use<dining.scad>;
+use<kitchen.scad>;
+use<laundry_room.scad>;
 
 use<wall_run.scad>;
 
@@ -82,6 +84,8 @@ master_bedroom_walls = wall_selector("master_bedroom", walls);
 bathroom_walls = wall_selector("bathroom", walls);
 living_room_walls = wall_selector("living_room", walls);
 dining_walls = wall_selector("dining", walls);
+kitchen_walls = wall_selector("kitchen", walls);
+laundry_room_walls = wall_selector("laundry_room", walls);
 
 rotate([ 0, 0, 180 ]) {
   entry(entry_walls);
@@ -125,5 +129,21 @@ dining_y_offset = living_room_y_offset - wall_x_offset(living_room_walls, len(li
 translate([ -dining_x_offset, -dining_y_offset, 0 ]) {
   rotate([ 0, 0, 0 ]) {
     dining(dining_walls);
+  }
+}
+
+kitchen_x_offset = dining_x_offset + wall_x_offset(dining_walls, len(dining_walls) - 1);
+kitchen_y_offset = dining_y_offset + wall_y_offset(dining_walls, len(dining_walls) - 1);
+translate([ -kitchen_x_offset, -kitchen_y_offset, 0 ]) {
+  rotate([ 0, 0, 0 ]) {
+    kitchen(kitchen_walls);
+  }
+}
+
+laundry_room_x_offset = kitchen_x_offset - wall_x_offset(kitchen_walls, len(kitchen_walls) - 1) - 0.35;
+laundry_room_y_offset = kitchen_y_offset - wall_y_offset(kitchen_walls, len(kitchen_walls) - 1) + 10.25;
+translate([ -laundry_room_x_offset, -laundry_room_y_offset, 0 ]) {
+  rotate([ 0, 0, -90 ]) {
+    laundry_room();
   }
 }
