@@ -78,6 +78,8 @@ module double_door_frame(width = 60, height = 8 * 12, ceilingHeight = 8 * 12, ty
       }
     }
   }
+  else
+  {}
 }
 
 difference() {

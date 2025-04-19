@@ -167,6 +167,24 @@ Repo to learn the art of openscad
 ## preview/modules/kbbq_table.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/kbbq_table.png" width="650">
 
+## preview/modules/rooms/bathroom.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/bathroom.png" width="650">
+
+## preview/modules/rooms/bedroom_area_front_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/bedroom_area_front_view.png" width="650">
+
+## preview/modules/rooms/bedroom_area_iso_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/bedroom_area_iso_view.png" width="650">
+
+## preview/modules/rooms/bedroom_area_side_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/bedroom_area_side_view.png" width="650">
+
+## preview/modules/rooms/bedroom_area_top.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/bedroom_area_top.png" width="650">
+
+## preview/modules/rooms/bedroom_area_top_view.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/bedroom_area_top_view.png" width="650">
+
 ## preview/modules/rooms/dining_front_view.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/dining_front_view.png" width="650">
 
@@ -187,6 +205,18 @@ Repo to learn the art of openscad
 
 ## preview/modules/rooms/entry.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/entry.png" width="650">
+
+## preview/modules/rooms/garage.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/garage.png" width="650">
+
+## preview/modules/rooms/guest_bedroom.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/guest_bedroom.png" width="650">
+
+## preview/modules/rooms/ham_antenna_plan.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/ham_antenna_plan.png" width="650">
+
+## preview/modules/rooms/house.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/house.png" width="650">
 
 ## preview/modules/rooms/kitchen_area_front_view.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/kitchen_area_front_view.png" width="650">
@@ -244,6 +274,12 @@ Repo to learn the art of openscad
 
 ## preview/modules/rooms/laundry_room_top_view.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/laundry_room_top_view.png" width="650">
+
+## preview/modules/rooms/living_room.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/living_room.png" width="650">
+
+## preview/modules/rooms/master_bedroom.png
+<img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/master_bedroom.png" width="650">
 
 ## preview/modules/rooms/office_front_view.png
 <img src="https://raw.githubusercontent.com/neotericpiguy/Drawings/dev/preview/modules/rooms/office_front_view.png" width="650">
