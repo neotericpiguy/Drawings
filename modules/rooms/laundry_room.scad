@@ -27,7 +27,7 @@ module laundry_room() {
   ];
   wall_run(roomWalls);
 
- //  // translate([ -4, -82.5 + 24, 0 ]) {
+  //  // translate([ -4, -82.5 + 24, 0 ]) {
   //  translate([ -4, -kitchendoor_wall_length + shelfwall_depth, 0 ]) {
   //    rotate([ 0, 0, -90 ]) {
   //      entry();

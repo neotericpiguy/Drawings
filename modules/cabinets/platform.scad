@@ -3,7 +3,7 @@ use<two_by_four.scad>;
 
 // Exterior
 module platform(base_cabinet_width = 36, depth = base_cabinet_depth) {
-  platform_depth = depth- toekick_depth;
+  platform_depth = depth - toekick_depth;
   platform_height = toekick_height;
   platform_width = base_cabinet_width - 2 * ear;
 

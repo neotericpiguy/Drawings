@@ -48,7 +48,7 @@ module ham_antenna_plan() {
     brick_wall();
   }
   walls = [ [ 12 * 12, 0 ], [ 12, 90 ] ];
-//  module_run(walls);
+  //  module_run(walls);
 }
 
 module module_run(wallVec, rotation = 0, wall_offset = 0, wall_height = 7 * 12, shape = cube) {

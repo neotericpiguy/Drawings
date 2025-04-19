@@ -79,8 +79,8 @@ translate([ -bathroom_x_offset, -bathroom_y_offset, 0 ]) {
   bathroom(bathroom_walls);
 }
 
-master_bedroom_x_offset = bathroom_x_offset - master_bedroom_walls[2][0] +  master_bedroom_walls[0][0]+4;
-master_bedroom_y_offset = bathroom_y_offset -  master_bedroom_walls[1][0]-4;
+master_bedroom_x_offset = bathroom_x_offset - master_bedroom_walls[2][0] + master_bedroom_walls[0][0] + 4;
+master_bedroom_y_offset = bathroom_y_offset - master_bedroom_walls[1][0] - 4;
 translate([ -master_bedroom_x_offset, -master_bedroom_y_offset, 0 ]) {
   master_bedroom(master_bedroom_walls);
 }

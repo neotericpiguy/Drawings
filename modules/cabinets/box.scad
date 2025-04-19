@@ -2,7 +2,7 @@ include<cabinet_standards>;
 
 module box(base_cabinet_width = 36, depth = base_cabinet_depth, height = base_cabinet_height) {
   box_depth = depth - stile_thickness;
-  stile_height = height- toekick_height;
+  stile_height = height - toekick_height;
   box_height = stile_height;
 
   box_width = base_cabinet_width - 2 * ear;

@@ -7,7 +7,7 @@ use<wall_nail_plate.scad>;
 use<drywall.scad>;
 
 module wall(length, height = 8 * 12, drywallCoverage = [ 0, 0 ]) {
-  if(!basicWall)
+  if (!basicWall)
   {
     // base plate
     wall_plate(length, two_by_four_height);
@@ -26,8 +26,7 @@ module wall(length, height = 8 * 12, drywallCoverage = [ 0, 0 ]) {
   }
   else
   {
-    cube([length,two_by_four_depth,height]);
-
+    cube([ length, two_by_four_depth, height ]);
   }
 }
 

@@ -54,7 +54,7 @@ module double_door_frame(width = 60, height = 8 * 12, ceilingHeight = 8 * 12, ty
       }
       else
       {
-        translate([ width, 0, 0]) {
+        translate([ width, 0, 0 ]) {
           rotate([ 0, 0, angle ]) {
             mirror([ 1, 0, 0 ]) {
               cube([ width, doorThickness, height ]);
@@ -79,7 +79,8 @@ module double_door_frame(width = 60, height = 8 * 12, ceilingHeight = 8 * 12, ty
     }
   }
   else
-  {}
+  {
+  }
 }
 
 difference() {
@@ -92,4 +93,3 @@ difference() {
 translate([ (8 * 12 - 60) / 2, 0, 0 ]) {
   double_door_frame(60, 7 * 12, 10 * 12);
 }
-
