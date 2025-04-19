@@ -7,20 +7,27 @@ use<wall_nail_plate.scad>;
 use<drywall.scad>;
 
 module wall(length, height = 8 * 12, drywallCoverage = [ 0, 0 ]) {
-  // base plate
-  wall_plate(length, two_by_four_height);
+  if (!basicWall)
+  {
+    // base plate
+    wall_plate(length, two_by_four_height);
 
-  // top plate
-  // wall_plate(length, height);
+    // top plate
+    // wall_plate(length, height);
 
-  // Wall Studs
-  wall_studs(length, height);
+    // Wall Studs
+    wall_studs(length, height);
 
-  // Drywall nail plate
-  wall_nail_plate(length, height, drywallCoverage);
+    // Drywall nail plate
+    wall_nail_plate(length, height, drywallCoverage);
 
-  // Interior Drywall
-  drywall(length, height, drywallCoverage);
+    // Interior Drywall
+    drywall(length, height, drywallCoverage);
+  }
+  else
+  {
+    cube([ length, two_by_four_depth, height ]);
+  }
 }
 
 testLength = 4;
