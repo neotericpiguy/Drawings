@@ -12,8 +12,11 @@ DIM_SPACE = .1 * DOC_SCALING_FACTOR;
 
 dimOn = true;
 
+countertop_overhang = 1.5;
+
 base_cabinet_height = 34.5;
 base_cabinet_depth = 24;
+vanity_cabinet_depth = 21;
 
 ear = 0.25; toekick_height = 3.5;
 toekick_depth = 3.5;
@@ -22,12 +25,9 @@ rail_height = 1.75;
 rail_thickness = 0.75;
 
 stile_width = 1.75;
-stile_height = base_cabinet_height - toekick_height;
 stile_thickness = 0.75;
 
 box_thickness = 0.75;
-box_depth = base_cabinet_depth - stile_thickness;
-box_height = stile_height;
 
 title_width = 290;
 row_height = 15;

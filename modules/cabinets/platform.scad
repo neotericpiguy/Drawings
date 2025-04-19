@@ -2,8 +2,8 @@ include<cabinet_standards>;
 use<two_by_four.scad>;
 
 // Exterior
-module platform(base_cabinet_width = 36) {
-  platform_depth = base_cabinet_depth - toekick_depth;
+module platform(base_cabinet_width = 36, depth = base_cabinet_depth) {
+  platform_depth = depth- toekick_depth;
   platform_height = toekick_height;
   platform_width = base_cabinet_width - 2 * ear;
 
@@ -26,8 +26,6 @@ module platform(base_cabinet_width = 36) {
   translate([ two_by_four_height, (platform_depth + two_by_four_depth) / 2, two_by_four_depth - two_by_four_height ])
       rotate([ 90, 0, 0 ])
           two_by_four(platform_width - 2 * two_by_four_height);
-
-//  dimentor(platform_width, platform_depth, platform_height, 4);
 }
 
 platform();
